@@ -9,7 +9,7 @@
     ]
   },
   "hosting": {
-    "public": "clay_front/dist",
+    "public": "clay_front/dist/",
     "ignore": [
       "firebase.json",
       "**/.*",
