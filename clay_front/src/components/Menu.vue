@@ -20,7 +20,7 @@
                         <div style="font-size:50px; bold">Ala bala suck it </div>
                     </v-col>
                     <v-col cols=12>
-                    <div style="font-size:30px">Ala bala suck it again </div>
+                        <div style="font-size:30px">Ala bala suck it again </div>
                     </v-col>
                     <v-col cols=12>
                     <v-text-field
@@ -34,41 +34,39 @@
                             <v-btn
                             icon
                             small
-                            ></v-btn>
-                            <v-icon
-                                color="deep-orange"
-                                dense
-                                large
-                                flat
-                                @click="search()"
                             >
-                                mdi-magnify
-                            </v-icon> 
+                                <v-icon
+                                    color="deep-orange"
+                                    dense
+                                    size=35px
+                                    @click="search()"
+                                >
+                                    mdi-magnify
+                                </v-icon> 
+                            </v-btn>
                         </template>
                         <template v-slot:prepend-inner>
-                                <v-menu offset-y>
-                                    <template v-slot:activator="{ on, attrs }">
-                                        <v-btn
-                                        rounded
-                                        color="#ff5722"
-                                        style="color:white"
-                                        flat
-                                        dense
-                                        small
-                                        v-bind="attrs"
-                                        v-on="on"
-                                        >Filters<v-icon>mdi-menu-down</v-icon>
-                                        </v-btn>
-                                    </template>
+                            <v-menu offset-y :close-on-content-click="false">
+                                <template v-slot:activator="{ on }">
+                                    <v-btn
+                                    rounded
+                                    color="#ff5722"
+                                    style="color:white"
+                                    dense
+                                    height=25
+                                    v-on="on"
+                                    >Filters<v-icon>mdi-menu-down</v-icon>
+                                    </v-btn>
+                                </template>
                                     <v-list>
                                         <v-list-item
-                                        v-for="item in items"
-                                        :key="item"
+                                            v-for="item in items"
+                                            :key="item"
                                         >
-                                        <v-list-item-title>{{ item }}</v-list-item-title>
+                                            <v-list-item-title>{{ item }}</v-list-item-title>
                                         </v-list-item>
                                     </v-list>
-                                </v-menu>
+                            </v-menu>
                         </template>
                     </v-text-field>
                     </v-col>
