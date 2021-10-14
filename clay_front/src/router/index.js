@@ -1,8 +1,8 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Menu from "../components/Menu.vue";
-
-Vue.use(VueRouter);
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Menu from '../components/Menu.vue'
+import List from '../components/List.vue'
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -10,6 +10,11 @@ const routes = [
     name: "Menu",
     component: Menu,
   },
+  {
+    path: '/list',
+    name: 'List',
+    component: List,
+  }
   // {
   //   path: '/',
   //   name: 'Home',
