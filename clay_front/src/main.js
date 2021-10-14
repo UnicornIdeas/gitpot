@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
-import vuetify from './plugins/vuetify'
-import router from './router'
+import Vue from "vue";
+import App from "./App.vue";
+import vuetify from "./plugins/vuetify";
+import router from "./router";
 
 // import firebase from 'firebase'
 // Import the functions you need from the SDKs you need
@@ -22,12 +22,12 @@ import router from './router'
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(vuetify)
+Vue.use(vuetify);
 
 new Vue({
   vuetify,
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

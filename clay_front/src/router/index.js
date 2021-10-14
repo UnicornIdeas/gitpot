@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Menu from '../components/Menu.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Menu from "../components/Menu.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/menu',
-    name: 'Menu',
+    path: "/menu",
+    name: "Menu",
     component: Menu,
-  }
+  },
   // {
   //   path: '/',
   //   name: 'Home',
@@ -23,12 +23,12 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
