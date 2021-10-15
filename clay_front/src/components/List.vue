@@ -37,38 +37,6 @@
                 <v-list-item-content
                   style="text-align: left; font-family: Poppins; font-weight: bold; font-size: 40px"
                 >
-<<<<<<< HEAD
-                  <v-list-item-title>Filters</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-content style="text-align: left">
-                  <v-list-item-title>Categories</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-list-item-group>
-                <v-list-item v-for="item in items" :key="item">
-                  <v-list-item-action>
-                    <v-checkbox v-model="selectedFilters" :value="item" />
-                  </v-list-item-action>
-                  <v-list-item-content style="text-align: left">
-                    <v-list-item-title v-text="item"></v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-col>
-          <v-divider vertical></v-divider>
-          <v-col cols="9">
-            <slot><Menu></Menu></slot>
-            <slot><Menu></Menu></slot>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-app>
-=======
                     <template v-slot:append>
                         <v-btn
                         icon
@@ -147,18 +115,13 @@
             </v-container>
         </v-main>
     </v-app>
->>>>>>> 46c22925f62f8aaded5ede7a8f03b4f0bffc0d81
 </template>
 
 <script lang="js">
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiGithub } from '@mdi/js'
-<<<<<<< HEAD
-import Menu from './Menu.vue'
-=======
 // eslint-disable-next-line no-unused-vars
 import Result from './Result'
->>>>>>> 46c22925f62f8aaded5ede7a8f03b4f0bffc0d81
 
 export default {
     name: "List",
@@ -241,12 +204,8 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-<style></style>
-=======
 <style>
     .v-data-table table {
         border-spacing: 10px !important;
     }
 </style>
->>>>>>> 46c22925f62f8aaded5ede7a8f03b4f0bffc0d81
