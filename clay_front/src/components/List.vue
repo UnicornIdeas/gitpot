@@ -3,10 +3,17 @@
     align-start
     fill-height
     fluid
+    style="background-color:#f3f5f7;"
   >
-    <v-row class="fill-height">
-      <v-col cols="3">
-        <v-list>
+    <v-row
+      class="fill-height"
+      style="margin-left:10vw;margin-right:10vw;margin-top:10px;"
+    >
+      <v-col
+        cols="3"
+        style="background-color:#f3f5f7"
+      >
+        <v-list style="background-color:#f3f5f7">
           <v-list-item>
             <v-list-item-content
               style="text-align: left; font-family: Poppins; font-weight: bold; font-size: 40px"
@@ -38,7 +45,6 @@
           </v-list-item-group>
         </v-list>
       </v-col>
-      <v-divider vertical />
       <v-col cols="9">
         <v-data-table
           fill-height
@@ -47,6 +53,7 @@
           :items-per-page="5"
           no-data-text="No results found"
           class="elevation-1"
+          style="box-shadow:unset !important; background-color:#f3f5f7;"
         >
           <template
             id="result"

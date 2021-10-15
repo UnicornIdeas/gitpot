@@ -3,7 +3,7 @@
     app
     align-center
     justify-center
-    color="white"
+    color="#f3f5f7"
   >
     <v-app-bar-nav-icon disabled>
       <v-img
