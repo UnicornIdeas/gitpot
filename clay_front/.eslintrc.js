@@ -10,10 +10,10 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:vue/recommended',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier/recommended',
   ],
   rules: {
-    'vue/valid-v-slot': ['error', { allowModifiers: true }],
+    // 'vue/valid-v-slot': ['error', { allowModifiers: true }],
     'no-console': 'off',
     'comma-dangle': 'off',
     'class-methods-use-this': 'off',
@@ -29,6 +29,6 @@ module.exports = {
         ignores: [],
       },
     ],
-    'prettier/prettier': ['error', { singleQuote: true, endOfLine: 'auto' }],
+    // 'prettier/prettier': ['error', { singleQuote: true, endOfLine: 'auto' }],
   },
 };

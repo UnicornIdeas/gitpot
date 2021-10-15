@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <router-view />
+    <v-app
+      id="gitpot"
+      app
+    >
+      <router-view name="appbar_view" />
+      <v-main
+        app
+      >
+        <router-view name="main_view" />
+      </v-main>
+    </v-app>
   </div>
 </template>
 

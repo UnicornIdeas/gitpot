@@ -3,19 +3,19 @@
     <v-row>
       <v-col cols="8">
         <v-row>
-          {{ this.result.name }}
+          {{ result.name }}
         </v-row>
         <v-row>
-          {{ this.result.date }}
+          {{ result.date }}
         </v-row>
         <v-row>
-          {{ this.result.description }}
+          {{ result.description }}
         </v-row>
         <v-row>
           <v-btn
             style="color: white"
             color="deep-orange"
-            v-for="tag in this.result.tags"
+            v-for="tag in result.tags"
             :key="tag"
             left
             class="mx-1"
@@ -28,7 +28,7 @@
         <v-row justify="end">
           <v-col cols="2" offset="5">
             <v-row>
-              {{ this.result.downloads }}
+              {{ result.downloads }}
             </v-row>
             <v-row> Downloads </v-row>
           </v-col>

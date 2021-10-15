@@ -1,38 +1,35 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Menu from "../components/Menu.vue";
-import List from "../components/List.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../components/Home.vue';
+import HomeAppbar from '../components/HomeAppbar.vue';
+import List from '../components/List.vue';
+import ListAppbar from '../components/ListAppbar.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/menu",
-    name: "Menu",
-    component: Menu,
+    path: '/',
+    name: 'home',
+    components:
+    {
+      main_view: Home,
+      appbar_view: HomeAppbar,
+    }
   },
   {
-    path: "/list",
-    name: "List",
-    component: List,
+    path: '/list',
+    name: 'List',
+    components:
+    {
+      main_view: List,
+      appbar_view: ListAppbar,
+    }
   },
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
