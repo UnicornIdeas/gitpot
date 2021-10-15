@@ -74,8 +74,20 @@
                     </v-col>
                     <v-divider vertical></v-divider>
                     <v-col cols=9>
-                        <slot><Menu></Menu></slot>
-                        <slot><Menu></Menu></slot>
+                        <v-data-table
+                            fill-height
+                            hide-default-header
+                            :items="testResults"
+                            :items-per-page=5
+                            no-data-text="No results found"
+                            class="elevation-1"
+                        >
+                            <template id="result" v-slot:item="{ item }">
+                                <tr>
+                                    <Result :result="item"/>
+                                </tr>
+                            </template>
+                        </v-data-table>
                     </v-col>
                 </v-row>
             </v-container>
@@ -87,16 +99,73 @@
 <script lang="js">
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiGithub } from '@mdi/js'
-import Menu from './Menu'
+// eslint-disable-next-line no-unused-vars
+import Result from './Result'
 
 export default {
-    name: "Gitpot",
+    name: "List",
     components: {
 		SvgIcon,
-        Menu
+        Result
 	},
     data() {
         return {
+            testResults: [
+                            {
+                                "name": "3id-keychain",
+                                "date": "Updated: Mar 5, 2021",
+                                "description": " data for 3ID Key data for 3ID Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "500M+",
+                                "likes": "1.4K",
+                                "urlpath":"./packages/3id-keychain"
+                            },
+                            {
+                                "name": "3id-keychain1",
+                                "date": "Updated: Mar 6, 2021",
+                                "description": "Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "2500M+",
+                                "likes": "21.4K",
+                                "urlpath":"./packages/3id-keychain"
+                            },
+                            {
+                                "name": "3id-keychain3",
+                                "date": "Updated: Mar 7, 2021",
+                                "description": "Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "5M+",
+                                "likes": "14K",
+                                "urlpath":"./packages/3id-keychain"
+                            },
+                            {
+                                "name": "3id-keychain4",
+                                "date": "Updated: Mar 8, 2021",
+                                "description": "Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "5100M+",
+                                "likes": "5.5K",
+                                "urlpath":"./packages/3id-keychain"
+                            },
+                            {
+                                "name": "3id-keychain5",
+                                "date": "Updated: Mar 9, 2021",
+                                "description": "Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "50M+",
+                                "likes": "2.1K",
+                                "urlpath":"./packages/3id-keychain"
+                            },
+                            {
+                                "name": "3id-keychain6",
+                                "date": "Updated: Mar 10, 2021",
+                                "description": "Key data for 3ID",
+                                "tags": ["DART", "NATIVE", "JS"],
+                                "downloads": "1500M+",
+                                "likes": "3.4K",
+                                "urlpath":"./packages/3id-keychain"
+                            }
+            ],
             mdiGithubPath: mdiGithub,
             items : ["Analytics", "Application Framework", "Databases", "Application Services", "Monitoring", "Security","Storage"],
             selectedFilters: []
@@ -117,5 +186,7 @@ export default {
 </script>
 
 <style>
-
+    .v-data-table table {
+        border-spacing: 10px !important;
+    }
 </style>

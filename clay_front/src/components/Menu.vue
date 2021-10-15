@@ -87,7 +87,7 @@
 
 
 export default {
-    name: "Gitpot",
+    name: "Menu",
     data() {
         return {
             items : ["one", "two", "three"]
