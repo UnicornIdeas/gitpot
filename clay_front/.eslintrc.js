@@ -1,12 +1,22 @@
 module.exports = {
+  rules: {
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+  },
+
   root: true,
+
   env: {
-    browser: true,
+    "browser": true,
+    // "commonjs": true,
   },
+
   parserOptions: {
-    parser: 'babel-eslint',
-    sourceType: 'module',
+    parser: "babel-eslint",
+    "ecmaVersion": 12,
   },
+
   extends: [
     'airbnb-base',
     'plugin:vue/recommended',
