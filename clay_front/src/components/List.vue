@@ -185,7 +185,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .v-data-table table {
         border-spacing: 10px !important;
     }
