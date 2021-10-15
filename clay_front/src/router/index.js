@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/menu',
-    name: 'Menu',
+    path: "/menu",
+    name: "Menu",
     component: Menu,
   },
   {
@@ -28,12 +28,12 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
