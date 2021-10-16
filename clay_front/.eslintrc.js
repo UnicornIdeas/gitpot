@@ -31,6 +31,7 @@ module.exports = {
     'import/extensions': 'off',
     'implicit-arrow-linebreak': 'off',
     'import/prefer-default-export': 'off',
+    'linebreak-style': ["error", "windows"],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'vue/component-name-in-template-casing': [
       'error',

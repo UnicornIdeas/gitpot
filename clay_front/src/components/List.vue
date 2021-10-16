@@ -73,6 +73,7 @@
 
 import { mdiGithub } from '@mdi/js';
 import Result from './Result';
+// import { queryFirestore } from '@/utils/firebase.js';
 
 export default {
   name: 'List',
@@ -148,7 +149,7 @@ export default {
     }
   },
   created() {
-
+    // queryFirestore();
   },
   methods: {
 
