@@ -49,7 +49,7 @@
         <v-data-table
           fill-height
           hide-default-header
-          :items="testResults"
+          :items="fsresults"
           :items-per-page="5"
           no-data-text="No results found"
           class="elevation-1"
@@ -70,77 +70,27 @@
 </template>
 
 <script lang="js">
-
 import { mdiGithub } from '@mdi/js';
 import Result from './Result';
-// import { queryFirestore } from '@/utils/firebase.js';
+import { queryFirestore } from '@/utils/firestore.js';
 
 export default {
   name: 'List',
   components: {
     Result
   },
+  props: {
+    searchResults: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
-      testResults: [
-        {
-          name: '3id-keychain',
-          date: 'Updated: Mar 5, 2021',
-          description: ' data for 3ID Key data for 3ID Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '500M+',
-          likes: '1.4K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain1',
-          date: 'Updated: Mar 6, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '2500M+',
-          likes: '21.4K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain3',
-          date: 'Updated: Mar 7, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '5M+',
-          likes: '14K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain4',
-          date: 'Updated: Mar 8, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '5100M+',
-          likes: '5.5K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain5',
-          date: 'Updated: Mar 9, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '50M+',
-          likes: '2.1K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain6',
-          date: 'Updated: Mar 10, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '1500M+',
-          likes: '3.4K',
-          urlpath: './packages/3id-keychain'
-        }
-      ],
       mdiGithubPath: mdiGithub,
       items: ['Analytics', 'Application Framework', 'Databases', 'Application Services', 'Monitoring', 'Security', 'Storage'],
-      selectedFilters: []
+      selectedFilters: [],
+      fsresults: []
     };
   },
   watch: {
@@ -149,7 +99,9 @@ export default {
     }
   },
   created() {
-    // queryFirestore();
+    const mcresults = queryFirestore('downloads', 'desc', ['REACT', 'JS', 'NATIVE']);
+    this.fsresults = mcresults;
+    console.log(this.fsresults);
   },
   methods: {
 
