@@ -40,7 +40,7 @@
         <v-data-table
           fill-height
           hide-default-header
-          :items="testResults"
+          :items="fsresults"
           :items-per-page="5"
           no-data-text="No results found"
           class="elevation-1"
@@ -58,16 +58,20 @@
 </template>
 
 <script lang="js">
-
 import { mdiGithub } from '@mdi/js';
 import Result from './Result';
-
-// import { queryFirestore } from '@/utils/firebase.js';
+import { queryFirestore } from '@/utils/firestore.js';
 
 export default {
   name: 'List',
   components: {
     Result
+  },
+  props: {
+    searchResults: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
@@ -133,7 +137,8 @@ export default {
       ],
       mdiGithubPath: mdiGithub,
       items: ['Analytics', 'Application Framework', 'Databases', 'Application Services', 'Monitoring', 'Security', 'Storage'],
-      selectedFilters: []
+      selectedFilters: [],
+      fsresults: []
     };
   },
   watch: {
@@ -142,7 +147,9 @@ export default {
     }
   },
   created() {
-    // queryFirestore();
+    const mcresults = queryFirestore('downloads', 'desc', ['REACT', 'JS', 'NATIVE']);
+    this.fsresults = mcresults;
+    console.log(this.fsresults);
   },
   methods: {
 

@@ -28,12 +28,14 @@
         <v-row justify="center">
           <v-col cols="8">
             <v-text-field
+              v-model="searchValue"
               outlined
               rounded
               label="Search models"
               background-color="white"
               flat
               solo
+              @keyup.enter="search()"
             >
               <template #append>
                 <v-btn
@@ -68,9 +70,9 @@
                       class="mr-3"
                     />
                   </template>
-                  <v-list>
+                  <v-list v-model="selectedFilters">
                     <v-list-item
-                      v-for="item in items"
+                      v-for="item in filters"
                       :key="item"
                     >
                       <v-list-item-title>{{ item }}</v-list-item-title>
@@ -118,15 +120,27 @@
 
 <script lang="js">
 // import firebase from "firebase/compat/app";
+import { searchFirestore } from '@/utils/firestore.js';
 
 export default {
   name: 'Home',
   data() {
     return {
-      items: ['one', 'two', 'three'],
+      searchValue: null,
+      filters: ['REACT', 'JS', 'DART'],
+      selectedFilters: []
     };
   },
-
+  methods: {
+    search() {
+      if (this.searchValue.length === 0) {
+        console.log('Enter a keyword to be searched!');
+        return;
+      }
+      const results = searchFirestore(this.searchValue);
+      console.log(results);
+    }
+  }
 };
 </script>
 
