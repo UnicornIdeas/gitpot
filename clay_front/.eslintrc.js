@@ -24,6 +24,7 @@ module.exports = {
   ],
   rules: {
     // 'vue/valid-v-slot': ['error', { allowModifiers: true }],
+    "linebreak-style": 0,
     'no-console': 'off',
     'comma-dangle': 'off',
     'class-methods-use-this': 'off',
