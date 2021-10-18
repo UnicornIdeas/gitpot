@@ -72,7 +72,6 @@
 <script lang="js">
 import { mdiGithub } from '@mdi/js';
 import Result from './Result';
-import { queryFirestore } from '@/utils/firestore.js';
 
 export default {
   name: 'List',
@@ -99,9 +98,6 @@ export default {
     }
   },
   created() {
-    const mcresults = queryFirestore('downloads', 'desc', ['REACT', 'JS', 'NATIVE']);
-    this.fsresults = mcresults;
-    console.log(this.fsresults);
   },
   methods: {
 
