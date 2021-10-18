@@ -4,13 +4,18 @@ export function login() {
   const provider = new GithubAuthProvider();
 
   const auth = getAuth();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GithubAuthProvider.credentialFromResult(result);
-      console.log(result);
-      console.log(credential);
-      console.log(result.user);
-    }).catch((error) => {
-      console.log(error);
-    });
+  return signInWithPopup(auth, provider);
+  // .then((result) => {
+  //   const credential = GithubAuthProvider.credentialFromResult(result);
+  //   console.log(result);
+  //   console.log(credential);
+  //   console.log(result.user);
+  // }).catch((error) => {
+  //   console.log(error);
+  // });
+}
+
+export function getUser() {
+  const auth = getAuth();
+  return auth.currentUser;
 }

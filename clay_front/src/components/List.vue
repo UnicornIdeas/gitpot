@@ -40,7 +40,7 @@
         <v-data-table
           fill-height
           hide-default-header
-          :items="fsresults"
+          :items="testResults"
           :items-per-page="5"
           no-data-text="No results found"
           class="elevation-1"
@@ -58,7 +58,7 @@
 </template>
 
 <script lang="js">
-import { mdiGithub } from '@mdi/js';
+
 import Result from './Result';
 
 export default {
@@ -76,44 +76,74 @@ export default {
     return {
       testResults: [
         {
-          name: '3id-keychain1',
-          date: 'Updated: Mar 6, 2021',
+          githubuser: 'PaulLeCam',
+          likes: '12545678',
+          urlpath: './packages/3id-keychain',
+          links: {
+            repository: 'https://github.com/ceramicstudio/datamodels',
+            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
+            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
+            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
+          },
+          tags: ['JS', 'NATIVE'],
+          downloads: '147',
+          version: '0.1.2',
+          date: '2021-08-19T13:53:59.390Z',
+          publisher: {
+            email: 'paul@ulem.net',
+            username: 'paul_lecam',
+          },
           description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '2500M+',
-          likes: '21.4K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain3',
-          date: 'Updated: Mar 7, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '5M+',
-          likes: '14K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain4',
-          date: 'Updated: Mar 8, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '5100M+',
-          likes: '5.5K',
-          urlpath: './packages/3id-keychain'
-        },
-        {
-          name: '3id-keychain5',
-          date: 'Updated: Mar 9, 2021',
-          description: 'Key data for 3ID',
-          tags: ['DART', 'NATIVE', 'JS'],
-          downloads: '50M+',
-          likes: '2.1K',
-          urlpath: './packages/3id-keychain'
+          author: '3Box Labs',
+          name: '3id-keychain'
         },
         {
           githubuser: 'PaulLeCam',
-          likes: '12345678',
+          likes: '12545678',
+          urlpath: './packages/3id-keychain',
+          links: {
+            repository: 'https://github.com/ceramicstudio/datamodels',
+            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
+            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
+            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
+          },
+          tags: ['JS', 'NATIVE'],
+          downloads: '147',
+          version: '0.1.2',
+          date: '2021-08-19T13:53:59.390Z',
+          publisher: {
+            email: 'paul@ulem.net',
+            username: 'paul_lecam',
+          },
+          description: 'Key data for 3ID',
+          author: '3Box Labs',
+          name: '3id-keychain'
+        },
+        {
+          githubuser: 'PaulLeCam',
+          likes: '12545678',
+          urlpath: './packages/3id-keychain',
+          links: {
+            repository: 'https://github.com/ceramicstudio/datamodels',
+            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
+            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
+            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
+          },
+          tags: ['JS', 'NATIVE'],
+          downloads: '147',
+          version: '0.1.2',
+          date: '2021-08-19T13:53:59.390Z',
+          publisher: {
+            email: 'paul@ulem.net',
+            username: 'paul_lecam',
+          },
+          description: 'Key data for 3ID',
+          author: '3Box Labs',
+          name: '3id-keychain'
+        },
+        {
+          githubuser: 'PaulLeCam',
+          likes: '12545678',
           urlpath: './packages/3id-keychain',
           links: {
             repository: 'https://github.com/ceramicstudio/datamodels',
@@ -134,7 +164,7 @@ export default {
           name: '3id-keychain'
         },
       ],
-      mdiGithubPath: mdiGithub,
+
       items: ['Analytics', 'Application Framework', 'Databases', 'Application Services', 'Monitoring', 'Security', 'Storage'],
       selectedFilters: [],
       fsresults: []
