@@ -1,52 +1,48 @@
 <template>
-  <v-card
-    color="#e9edf0"
-    elevation="0"
-  >
+  <v-card color="#e9edf0" elevation="0">
     <v-card-text>
       <v-row>
         <v-col cols="6">
           <v-list-item three-line>
-            <v-list-item-avatar
-              tile
-              size="60"
-              color="grey"
-            />
+            <v-list-item-avatar tile size="60">
+              <v-img :src="getPhoto(result.githubuser)" />
+            </v-list-item-avatar>
             <v-list-item-content class="text-left align-self-start">
               <v-list-item-title class="text-h6 mb-1">
                 {{ result.name }}
               </v-list-item-title>
-              <v-list-item-subtitle>{{ result.date }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ result.description }}</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                Published by <a>{{ result.publisher.username }}</a> on
+                <i>{{ fDate(result.date) }}</i>
+              </v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ result.description }}
+              </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-col>
 
         <v-col cols="6">
-          <v-row class="justify-end">
-            <v-col cols="3">
-              <v-list-item two-line>
-                <v-list-item-content>
-                  <v-list-item-subtitle>
-                    {{ result.downloads }}
-                  </v-list-item-subtitle>
-                  <v-list-item-subtitle>
-                    Downloads
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
+          <v-row class="justify-end align-top">
+            <v-col md="auto">
+              <v-row no-gutters>
+                <v-col>
+                  <b> {{ result.downloads }}</b>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col> Downloads </v-col>
+              </v-row>
             </v-col>
-            <v-col cols="2">
-              <v-list-item two-line>
-                <v-list-item-content>
-                  <v-list-item-subtitle>
-                    {{ result.likes }}
-                  </v-list-item-subtitle>
-                  <v-list-item-subtitle>
-                    Likes
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
+            <v-col md="auto">
+              <v-row no-gutters>
+                <v-col>
+                  <b> {{ result.likes }}</b>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col> Likes </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-col>
@@ -74,6 +70,8 @@
 </template>
 
 <script>
+import { formatDate, getUserPhoto } from '@/utils/utils';
+
 export default {
   name: 'Result',
   props: {
@@ -84,6 +82,13 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    fDate(d) {
+      return formatDate(d);
+    },
+    getPhoto(uname) {
+      return getUserPhoto(uname);
+    },
+  },
 };
 </script>

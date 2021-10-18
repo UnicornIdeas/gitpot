@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <v-app
-      id="gitpot"
-      app
-    >
+    <v-app id="gitpot" app>
       <router-view name="appbar_view" />
-      <v-main
-        app
-      >
+
+      <v-main app>
         <router-view name="main_view" />
       </v-main>
     </v-app>
@@ -17,9 +13,13 @@
 <style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+
   -webkit-font-smoothing: antialiased;
+
   -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
+
   color: #2c3e50;
 }
 
@@ -28,6 +28,7 @@
 
   a {
     font-weight: bold;
+
     color: #2c3e50;
 
     &.router-link-exact-active {

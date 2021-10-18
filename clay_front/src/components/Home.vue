@@ -1,28 +1,15 @@
 <template>
-  <v-container
-    fill-height
-    fluid
-    class="backgroundimage"
-  >
-    <v-row
-      justify="center"
-      align="center"
-      flat
-      no-gutters
-    >
+  <v-container fill-height fluid class="backgroundimage">
+    <v-row justify="center" align="center" flat no-gutters>
       <v-col cols="12">
         <v-row justify="center">
           <v-col cols="12">
-            <div class="title">
-              Clay bricks
-            </div>
+            <div class="title">Clay bricks</div>
           </v-col>
         </v-row>
         <v-row justify="center">
           <v-col>
-            <div class="subtitle">
-              The building blocks for the new web
-            </div>
+            <div class="subtitle">The building blocks for the new web</div>
           </v-col>
         </v-row>
         <v-row justify="center">
@@ -38,16 +25,8 @@
               @keyup.enter="search()"
             >
               <template #append>
-                <v-btn
-                  icon
-                  @click="search()"
-                >
-                  <v-icon
-                    large
-                    color="deep-orange"
-                  >
-                    mdi-magnify
-                  </v-icon>
+                <v-btn icon @click="search()">
+                  <v-icon large color="deep-orange"> mdi-magnify </v-icon>
                 </v-btn>
               </template>
               <template #prepend-inner>
@@ -65,16 +44,10 @@
                       Filters
                       <v-icon>mdi-menu-down</v-icon>
                     </v-btn>
-                    <v-divider
-                      vertical
-                      class="mr-3"
-                    />
+                    <v-divider vertical class="mr-3" />
                   </template>
                   <v-list v-model="selectedFilters">
-                    <v-list-item
-                      v-for="item in filters"
-                      :key="item"
-                    >
+                    <v-list-item v-for="item in filters" :key="item">
                       <v-list-item-title>{{ item }}</v-list-item-title>
                     </v-list-item>
                   </v-list>
@@ -85,19 +58,12 @@
         </v-row>
         <v-row style="margin-top: -40px">
           <v-col cols="12">
-            <div style="color: white">
-              Top searches and other shit
-            </div>
+            <div style="color: white">Top searches and other shit</div>
           </v-col>
         </v-row>
         <v-row justify="center">
           <v-col cols="1">
-            <v-btn
-              block
-              rounded
-              style="color: white"
-              color="deep-orange"
-            >
+            <v-btn block rounded style="color: white" color="deep-orange">
               Popular
             </v-btn>
           </v-col>
@@ -152,7 +118,7 @@ export default {
 
 <style scoped>
 .backgroundimage {
-  background-image: url("../assets/bg.png");
+  background-image: url('../assets/bg.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
