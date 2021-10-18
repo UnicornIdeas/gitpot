@@ -97,19 +97,15 @@ export default {
     };
   },
   methods: {
-    ...mapActions({
-      searchFirestore: 'searchJs'
-    }),
-    ...mapMutations({
-      updateKey: 'updateKeyword'
-    }),
+    ...mapActions(['searchFs']),
+    ...mapMutations(['updateKeyword']),
     search() {
       if (this.searchValue.length === 0) {
         console.log('Enter a keyword to be searched!');
         return;
       }
-      this.updateKey(this.searchValue);
-      this.searchFirestore();
+      this.updateKeyword(this.searchValue);
+      this.searchFs();
       this.$router.push('/list');
     }
   }

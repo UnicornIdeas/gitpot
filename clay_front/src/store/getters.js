@@ -1,23 +1,9 @@
 export default {
-    getKeyword: state => {
-        return state.keyword;
-    },
-    getFilters: state => {
-        return state.filters;
-    },
-    getElPerPage: state => {
-        return state.elPerPage;
-    },
-    getMaxPage: state => {
-        return state.maxPage;
-    },
-    getCurrentPage: state => {
-        return state.currentPage;
-    },
-    getElementsNumber: state => {
-        return state.elNumber;
-    },
-    getPageResults: state => {
-        return state.pageResults;
-    }
-}
+  getKeyword: (state) => state.keyword,
+  getFilters: (state) => state.filters,
+  getElPerPage: (state) => state.elPerPage,
+  getMaxPage: (state) => state.maxPage,
+  getCurrentPage: (state) => state.currentPage,
+  getElementsNumber: (state) => state.elNumber,
+  getPageResults: (state) => state.pageResults
+};

@@ -1,25 +1,24 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import actions from "./actions.js";
-import getters from "./getters.js";
-import actions from "./actions.js";
-import mutations from "./mutations.js";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import actions from './actions.js';
+import getters from './getters.js';
+import mutations from './mutations.js';
 
 Vue.use(Vuex);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 export default new Vuex.Store({
   state: {
     keyword: '',
-    filters: Array(),
+    filters: [],
     elPerPage: 15,
     currentPage: 1,
     maxPage: 1,
     elNumber: 0,
-    pageResults: Array(),
+    pageResults: [],
     loading: false,
   },
-  getters: getters,
-  mutations: mutations,
-  actions: actions
+  getters,
+  mutations,
+  actions
 });
