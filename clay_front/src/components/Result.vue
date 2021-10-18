@@ -1,10 +1,16 @@
 <template>
-  <v-card color="#e9edf0" elevation="0">
+  <v-card
+    color="#e9edf0"
+    elevation="0"
+  >
     <v-card-text>
       <v-row>
         <v-col cols="6">
           <v-list-item three-line>
-            <v-list-item-avatar tile size="60">
+            <v-list-item-avatar
+              tile
+              size="60"
+            >
               <v-img :src="getPhoto(result.githubuser)" />
             </v-list-item-avatar>
             <v-list-item-content class="text-left align-self-start">
