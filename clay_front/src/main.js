@@ -5,10 +5,6 @@ import vuetify from './plugins/vuetify';
 import router from './router';
 import store from './store/store.js';
 
-// import firebase from 'firebase'
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-
 const firebaseConfig = {
   apiKey: 'AIzaSyBjD5-MT-lSqtQoOc7snVGHHqkSkHjrtMY',
   authDomain: 'clay-netw.firebaseapp.com',
@@ -18,7 +14,6 @@ const firebaseConfig = {
   appId: '1:844980183975:web:f5dff8df67e0ef043dcc82',
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 Vue.config.productionTip = false;

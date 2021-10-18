@@ -53,28 +53,27 @@ const options = {
 };
 
 // interogare simpla firestore dupa keyword
-export function searchFirestore(keyword, pageNumber, elPerPage) {
+export async function searchFirestore(keyword, pageNumber, elPerPage) {
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
 
-  esClient
-    .search(keyword, options)
-    .then((resultList) => {
-      const res = {
-        itemsNumber: resultList.info.meta.page.total_results,
-        maxPage: resultList.info.meta.page.total_pages,
-        result: []
-      };
-
+  const res = {};
+  try {
+    const resultList = await esClient.search(keyword, options);
+    if (resultList !== null) {
+      const result = [];
       resultList.results.forEach((resultItem) => {
-        res.result.push(resultItem.data);
+        result.push(resultItem.data);
       });
-      console.log(resultList);// dbg
-      return res;
-    })
-    .catch((error) => {
-      throw error;
-    });
+      res.itemsNumber = resultList.info.meta.page.total_results;
+      res.maxPage = resultList.info.meta.page.total_pages;
+      res.result = result;
+    }
+  } catch (error) {
+    console.log(`error interogating elastic: ${error}`);
+  }
+
+  return res;
 }
 
 export function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {

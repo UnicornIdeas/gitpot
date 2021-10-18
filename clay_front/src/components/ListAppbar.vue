@@ -71,7 +71,6 @@ export default {
         this.isSignedIn = true;
         this.userImage = user.photoURL;
         this.userName = user.reloadUserInfo.screenName;
-        console.log(user);
       } else {
         this.isSignedIn = false;
         this.userImage = '';

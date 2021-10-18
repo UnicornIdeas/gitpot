@@ -9,11 +9,14 @@ export default {
     let res = null;
     context.commit('updateLoading', true);
     try {
-      res = await searchFirestore(
+      const resp = await searchFirestore(
         context.state.keyword,
         context.state.currentPage,
         context.state.elPerPage
       );
+      if (resp !== null) {
+        res = resp;
+      }
     } catch (err) {
       console.log(`error: ${err}`);
     } finally {
@@ -23,6 +26,8 @@ export default {
     if (res === null) {
       return;
     }
+
+    console.log(res);// dbg
 
     context.commit('updateElementsNumber', res.itemNumber);
     context.commit('updateMaxPage', res.maxPage);
