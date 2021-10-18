@@ -1,13 +1,6 @@
 <template>
-  <v-app-bar
-    app
-    flat
-    color="white"
-  >
-    <v-row
-      align="center"
-      justify="space-around"
-    >
+  <v-app-bar app flat color="white">
+    <v-row align="center" justify="space-around">
       <v-col cols="1">
         <v-app-bar-nav-icon disabled>
           <v-img
@@ -18,18 +11,10 @@
         </v-app-bar-nav-icon>
       </v-col>
       <v-col cols="6">
-        <v-btn plain>
-          Learn
-        </v-btn>
-        <v-btn plain>
-          Build
-        </v-btn>
-        <v-btn plain>
-          Explore
-        </v-btn>
-        <v-btn plain>
-          Participate
-        </v-btn>
+        <v-btn plain> Learn </v-btn>
+        <v-btn plain> Build </v-btn>
+        <v-btn plain> Explore </v-btn>
+        <v-btn plain> Participate </v-btn>
       </v-col>
       <v-col cols="3">
         <v-btn
@@ -59,14 +44,12 @@ import { login } from '@/utils/firebase.js';
 export default {
   name: 'HomeAppbar',
   data() {
-    return {
-
-    };
+    return {};
   },
   methods: {
     githubLogin() {
       login();
-    }
-  }
+    },
+  },
 };
 </script>

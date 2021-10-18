@@ -27,7 +27,7 @@
             <v-col md="auto">
               <v-row no-gutters>
                 <v-col>
-                  <b> {{ result.downloads }}</b>
+                  <b> {{ abbr(result.downloads) }}</b>
                 </v-col>
               </v-row>
               <v-row no-gutters>
@@ -37,7 +37,7 @@
             <v-col md="auto">
               <v-row no-gutters>
                 <v-col>
-                  <b> {{ result.likes }}</b>
+                  <b> {{ abbr(result.likes) }}</b>
                 </v-col>
               </v-row>
               <v-row no-gutters>
@@ -55,9 +55,9 @@
           <v-btn
             v-for="tag in result.tags"
             :key="tag"
-            small
+            x-small
             style="color: black"
-            color="#ffb08a"
+            color="#aed0ff"
             class="mx-1"
             depressed
           >
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { formatDate, getUserPhoto } from '@/utils/utils';
+import { formatDate, getUserPhoto, abbreviateNumber } from '@/utils/utils';
 
 export default {
   name: 'Result',
@@ -88,6 +88,9 @@ export default {
     },
     getPhoto(uname) {
       return getUserPhoto(uname);
+    },
+    abbr(v) {
+      return abbreviateNumber(v);
     },
   },
 };
