@@ -52,16 +52,19 @@ const options = {
   }
 };
 
-const results = [];
-
-export function searchFirestore(keyword, pageNumber) {
-  const pageOptions = { current: pageNumber, size: 15 };
+export function searchFirestore(keyword, pageNumber, elPerPage) {
+  const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
-  results.length = 0;
+
   esClient
     .search(keyword, options)
     .then((resultList) => {
-      const res = { items: resultList.info.meta.page.total_results, result: [] };
+      const res = {
+        itemsNumber: resultList.info.meta.page.total_results,
+        maxPage: resultList.info.meta.page.total_pages,
+        result: []
+      };
+
       resultList.results.forEach((resultItem) => {
         res.result.push(resultItem.data);
       });
@@ -72,7 +75,8 @@ export function searchFirestore(keyword, pageNumber) {
       console.log(`error: ${error}`);
     });
 }
-export function queryFirestore(keyword, sortVariable, type, filters, pageNumber) {
+
+export function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {
   if (sortVariable === 'downloads') {
     const sortOptions = [{ downloads: type }];
     options.sort = sortOptions;
@@ -80,16 +84,21 @@ export function queryFirestore(keyword, sortVariable, type, filters, pageNumber)
     const sortOptions = [{ likes: type }];
     options.sort = sortOptions;
   }
-  const filterOptions = { tags: filters };
-  options.filters = filterOptions;
-  const pageOptions = { current: pageNumber, size: 15 };
+  if (filters.length !== 0) {
+    const filterOptions = { tags: filters };
+    options.filters = filterOptions;
+  }
+  const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
 
-  results.length = 0;
   esClient
     .search(keyword, options)
     .then((resultList) => {
-      const res = { items: resultList.info.meta.page.total_results, result: [] };
+      const res = {
+        itemsNumber: resultList.info.meta.page.total_results,
+        maxPage: resultList.info.meta.page.total_pages,
+        result: []
+      };
       resultList.results.forEach((resultItem) => {
         res.result.push(resultItem.data);
       });
@@ -101,7 +110,7 @@ export function queryFirestore(keyword, sortVariable, type, filters, pageNumber)
     });
 }
 
-searchFirestore('identity');
+// searchFirestore('identity');
 // const sp = 'downloads';
 // const t = 'desc';
 // const f = ['NATIVE', 'JS', 'REACT'];

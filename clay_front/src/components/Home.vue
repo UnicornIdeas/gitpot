@@ -85,8 +85,7 @@
 </template>
 
 <script lang="js">
-// import firebase from "firebase/compat/app";
-import { searchFirestore } from '@/utils/firestore.js';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'Home',
@@ -98,13 +97,20 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      searchFirestore: 'searchJs'
+    }),
+    ...mapMutations({
+      updateKey: 'updateKeyword'
+    }),
     search() {
       if (this.searchValue.length === 0) {
         console.log('Enter a keyword to be searched!');
         return;
       }
-      const results = searchFirestore(this.searchValue);
-      console.log(results);
+      this.updateKey(this.searchValue);
+      this.searchFirestore();
+      this.$router.push('/list');
     }
   }
 };
