@@ -142,7 +142,7 @@ export default {
         console.log('Enter a keyword to be searched!');
         return;
       }
-      // this.updateKey(this.searchValue);
+      this.updateKey(this.searchValue);
       this.searchFirestore();
       this.$router.push('/list');
     }
