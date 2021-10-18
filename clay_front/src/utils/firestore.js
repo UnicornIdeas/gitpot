@@ -7,7 +7,7 @@ const esClient = ElasticAppSearch.createClient({
   engineName: 'models-search'
 });
 
-const options = {
+const baseOptions = {
   search_fields: {
     name: {},
     description: {}
@@ -54,6 +54,7 @@ const options = {
 
 // interogare simpla firestore dupa keyword
 export async function searchFirestore(keyword, pageNumber, elPerPage) {
+  const options = {...baseOptions};
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
 
@@ -65,18 +66,17 @@ export async function searchFirestore(keyword, pageNumber, elPerPage) {
       resultList.results.forEach((resultItem) => {
         result.push(resultItem.data);
       });
-      res.itemsNumber = resultList.info.meta.page.total_results;
-      res.maxPage = resultList.info.meta.page.total_pages;
+      res.itemNumber = resultList.info.meta.page.total_results;
       res.result = result;
     }
   } catch (error) {
     console.log(`error interogating elastic: ${error}`);
   }
-
   return res;
 }
 
-export function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {
+export async function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {
+  const options = {...baseOptions};
   if (sortVariable === 'downloads') {
     const sortOptions = [{ downloads: type }];
     options.sort = sortOptions;
@@ -91,27 +91,19 @@ export function queryFirestore(keyword, sortVariable, type, filters, pageNumber,
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
 
-  esClient
-    .search(keyword, options)
-    .then((resultList) => {
-      const res = {
-        itemsNumber: resultList.info.meta.page.total_results,
-        maxPage: resultList.info.meta.page.total_pages,
-        result: []
-      };
+  const res = {};
+  try {
+    const resultList = await esClient.search(keyword, options);
+    if (resultList !== null) {
+      const result = [];
       resultList.results.forEach((resultItem) => {
-        res.result.push(resultItem.data);
+        result.push(resultItem.data);
       });
-      console.log(res);
-      return res;
-    })
-    .catch((error) => {
-      console.log(`error: ${error}`);
-    });
+      res.itemNumber = resultList.info.meta.page.total_results;
+      res.result = result;
+    }
+  } catch (error) {
+    console.log(`error interogating elastic: ${error}`);
+  }
+  return res;
 }
-
-// searchFirestore('identity');
-// const sp = 'downloads';
-// const t = 'desc';
-// const f = ['NATIVE', 'JS', 'REACT'];
-// queryFirestore(sp, t, f);

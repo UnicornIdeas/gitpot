@@ -1,6 +1,14 @@
 <template>
-  <v-app-bar app align-center justify-center color="#f3f5f7">
-    <v-row align="center" justify="space-around">
+  <v-app-bar
+    app
+    align-center
+    justify-center
+    color="#f3f5f7"
+  >
+    <v-row
+      align="center"
+      justify="space-around"
+    >
       <v-col cols="1">
         <v-app-bar-nav-icon disabled>
           <v-img
@@ -22,8 +30,16 @@
           clearable
         >
           <template v-slot:append>
-            <v-btn icon small>
-              <v-icon color="deep-orange" dense size="30px" @click="search()">
+            <v-btn
+              icon
+              small
+            >
+              <v-icon
+                color="deep-orange"
+                dense
+                size="30px"
+                @click="search()"
+              >
                 mdi-magnify
               </v-icon>
             </v-btn>
@@ -38,7 +54,9 @@
           style="color: #ff5722"
           @click="signin"
         >
-          <v-icon left> mdi-github </v-icon>
+          <v-icon left>
+            mdi-github
+          </v-icon>
           Sign In
         </v-btn>
         <div v-else>
