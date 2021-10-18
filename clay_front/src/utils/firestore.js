@@ -52,6 +52,7 @@ const options = {
   }
 };
 
+// interogare simpla firestore dupa keyword
 export function searchFirestore(keyword, pageNumber, elPerPage) {
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
@@ -68,11 +69,11 @@ export function searchFirestore(keyword, pageNumber, elPerPage) {
       resultList.results.forEach((resultItem) => {
         res.result.push(resultItem.data);
       });
-      console.log(res);
+      console.log(resultList);// dbg
       return res;
     })
     .catch((error) => {
-      console.log(`error: ${error}`);
+      throw error;
     });
 }
 

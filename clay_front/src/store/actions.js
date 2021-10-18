@@ -1,20 +1,34 @@
 import { searchFirestore, queryFirestore } from '@/utils/firestore';
 
 export default {
-  searchFs(context) {
+  async searchFs(context) {
     if (context.state.loading === true) {
       return;
     }
-    context.commit('updateLoading', true);
 
-    const res = searchFirestore(context.state.keyword,
-      context.state.currentPage,
-      context.state.elPerPage);
+    let res = null;
+    context.commit('updateLoading', true);
+    try {
+      res = await searchFirestore(
+        context.state.keyword,
+        context.state.currentPage,
+        context.state.elPerPage
+      );
+    } catch (err) {
+      console.log(`error: ${err}`);
+    } finally {
+      context.commit('updateLoading', false);
+    }
+
+    if (res === null) {
+      return;
+    }
+
     context.commit('updateElementsNumber', res.itemNumber);
     context.commit('updateMaxPage', res.maxPage);
     context.commit('updatePageResults', res.result);
-    context.commit('updateLoading', false);
   },
+
   queryFs(context, payload) {
     if (context.state.loading === true) {
       return;
