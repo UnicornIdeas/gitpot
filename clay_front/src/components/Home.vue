@@ -91,7 +91,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      searchValue: null,
+      searchValue: '',
       filters: ['REACT', 'JS', 'DART'],
       selectedFilters: []
     };
@@ -101,14 +101,13 @@ export default {
     ...mapMutations(['updateKeyword']),
     search() {
       if (this.searchValue.length === 0) {
-        console.log('Enter a keyword to be searched!');
         return;
       }
       this.updateKeyword(this.searchValue);
       this.searchFs();
       this.$router.push('/list');
     }
-  }
+  },
 };
 </script>
 

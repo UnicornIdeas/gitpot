@@ -1,28 +1,23 @@
 <template>
-  <v-card
-    color="#e9edf0"
-    elevation="0"
-  >
+  <v-card color="#e9edf0" elevation="0">
     <v-card-text>
       <v-row>
         <v-col cols="6">
           <v-list-item three-line>
-            <v-list-item-avatar
-              tile
-              size="60"
-            >
-              <v-img :src="getPhoto(result.githubuser)" />
+            <v-list-item-avatar tile size="60">
+              <v-img :src="getPhoto(result.githubuser.raw)" />
             </v-list-item-avatar>
             <v-list-item-content class="text-left align-self-start">
               <v-list-item-title class="text-h6 mb-1">
-                {{ result.name }}
+                {{ result.name.raw }}
               </v-list-item-title>
               <v-list-item-subtitle>
-                Published by <a>{{ result.publisher.username }}</a> on
-                <i>{{ fDate(result.date) }}</i>
+                {{ result.version.raw }} - Published by
+                <a>{{ publisherName }}</a> on
+                <i>{{ fDate(result.date.raw) }}</i>
               </v-list-item-subtitle>
               <v-list-item-subtitle>
-                {{ result.description }}
+                {{ result.description.raw }}
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -33,7 +28,7 @@
             <v-col md="auto">
               <v-row no-gutters>
                 <v-col>
-                  <b> {{ abbr(result.downloads) }}</b>
+                  <b> {{ abbr(result.downloads.raw) }}</b>
                 </v-col>
               </v-row>
               <v-row no-gutters>
@@ -43,7 +38,7 @@
             <v-col md="auto">
               <v-row no-gutters>
                 <v-col>
-                  <b> {{ abbr(result.likes) }}</b>
+                  <b> {{ abbr(result.likes.raw) }}</b>
                 </v-col>
               </v-row>
               <v-row no-gutters>
@@ -59,7 +54,7 @@
       <v-col cols="8">
         <v-row>
           <v-btn
-            v-for="tag in result.tags"
+            v-for="tag in result.tags.raw"
             :key="tag"
             x-small
             style="color: black"
@@ -87,6 +82,14 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    publisherName() {
+      return JSON.parse(this.result.publisher.raw).username;
+    },
+  },
+  mounted() {
+    console.log(this.result); // db
   },
   methods: {
     fDate(d) {

@@ -40,8 +40,9 @@
         <v-data-table
           fill-height
           hide-default-header
-          :items="testResults"
-          :items-per-page="5"
+          :items="pageResults"
+          :server-items-length="elNumber"
+          :items-per-page="15"
           no-data-text="No results found"
           class="elevation-1"
           style="box-shadow: unset !important; background-color: #f3f5f7"
@@ -59,18 +60,13 @@
 
 <script lang="js">
 
+import { mapState } from 'vuex';
 import Result from './Result';
 
 export default {
   name: 'List',
   components: {
     Result
-  },
-  props: {
-    searchResults: {
-      type: Object,
-      required: true,
-    },
   },
   data() {
     return {
@@ -97,89 +93,23 @@ export default {
           author: '3Box Labs',
           name: '3id-keychain'
         },
-        {
-          githubuser: 'PaulLeCam',
-          likes: '12545678',
-          urlpath: './packages/3id-keychain',
-          links: {
-            repository: 'https://github.com/ceramicstudio/datamodels',
-            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
-            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
-            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
-          },
-          tags: ['JS', 'NATIVE'],
-          downloads: '147',
-          version: '0.1.2',
-          date: '2021-08-19T13:53:59.390Z',
-          publisher: {
-            email: 'paul@ulem.net',
-            username: 'paul_lecam',
-          },
-          description: 'Key data for 3ID',
-          author: '3Box Labs',
-          name: '3id-keychain'
-        },
-        {
-          githubuser: 'PaulLeCam',
-          likes: '12545678',
-          urlpath: './packages/3id-keychain',
-          links: {
-            repository: 'https://github.com/ceramicstudio/datamodels',
-            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
-            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
-            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
-          },
-          tags: ['JS', 'NATIVE'],
-          downloads: '147',
-          version: '0.1.2',
-          date: '2021-08-19T13:53:59.390Z',
-          publisher: {
-            email: 'paul@ulem.net',
-            username: 'paul_lecam',
-          },
-          description: 'Key data for 3ID',
-          author: '3Box Labs',
-          name: '3id-keychain'
-        },
-        {
-          githubuser: 'PaulLeCam',
-          likes: '12545678',
-          urlpath: './packages/3id-keychain',
-          links: {
-            repository: 'https://github.com/ceramicstudio/datamodels',
-            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
-            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
-            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
-          },
-          tags: ['JS', 'NATIVE'],
-          downloads: '147',
-          version: '0.1.2',
-          date: '2021-08-19T13:53:59.390Z',
-          publisher: {
-            email: 'paul@ulem.net',
-            username: 'paul_lecam',
-          },
-          description: 'Key data for 3ID',
-          author: '3Box Labs',
-          name: '3id-keychain'
-        },
       ],
 
       items: ['Analytics', 'Application Framework', 'Databases', 'Application Services', 'Monitoring', 'Security', 'Storage'],
       selectedFilters: [],
-      fsresults: []
     };
+  },
+  computed: {
+    ...mapState(['elNumber', 'pageResults'])
   },
   watch: {
     selectedFilters(val) {
       console.log(val);
     }
   },
-  created() {
-  },
   methods: {
 
-  }
+  },
 };
 </script>
 

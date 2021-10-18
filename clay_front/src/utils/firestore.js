@@ -54,19 +54,18 @@ const options = {
 
 // interogare simpla firestore dupa keyword
 export async function searchFirestore(keyword, pageNumber, elPerPage) {
-  const pageOptions = { current: pageNumber, size: elPerPage };
-  options.page = pageOptions;
+  const opt = { ...options };
+  opt.page = { current: pageNumber, size: elPerPage };
 
   const res = {};
   try {
-    const resultList = await esClient.search(keyword, options);
+    const resultList = await esClient.search(keyword, opt);
     if (resultList !== null) {
       const result = [];
       resultList.results.forEach((resultItem) => {
         result.push(resultItem.data);
       });
       res.itemsNumber = resultList.info.meta.page.total_results;
-      res.maxPage = resultList.info.meta.page.total_pages;
       res.result = result;
     }
   } catch (error) {

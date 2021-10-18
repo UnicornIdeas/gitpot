@@ -6,6 +6,9 @@ export default {
       return;
     }
 
+    context.commit('clearPageResults');
+    context.commit('updateElementsNumber', 0);
+
     let res = null;
     context.commit('updateLoading', true);
     try {
@@ -27,10 +30,7 @@ export default {
       return;
     }
 
-    console.log(res);// dbg
-
     context.commit('updateElementsNumber', res.itemNumber);
-    context.commit('updateMaxPage', res.maxPage);
     context.commit('updatePageResults', res.result);
   },
 
@@ -47,7 +47,6 @@ export default {
       context.state.currentPage,
       context.state.elPerPage);
     context.commit('updateElementsNumber', res.itemNumber);
-    context.commit('updateMaxPage', res.maxPage);
     context.commit('updatePageResults', res.result);
     context.commit('updateLoading', false);
   }
