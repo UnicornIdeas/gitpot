@@ -10,12 +10,14 @@ Vue.config.productionTip = false;
 export default new Vuex.Store({
   state: {
     keyword: '',
-    filters: [],
     elPerPage: 15,
     currentPage: 1,
     elNumber: 0,
     pageResults: [],
     loading: false,
+    tags: [],
+    selectedFilters: [],
+    sorttype: '',
   },
   getters,
   mutations,

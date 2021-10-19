@@ -1,6 +1,19 @@
-import { searchFirestore, queryFirestore } from '@/utils/firestore';
+import { searchFirestore, queryFirestore, getTags } from '@/utils/firestore';
 
 export default {
+  gettags(context) {
+    if (context.state.tags.length !== 0) {
+      return;
+    }
+
+    getTags()
+      .then((taglist) => {
+        context.commit('addtags', taglist);
+      })
+      .catch((err) => { console.log(`error downloading tags ${err}`); });
+  },
+
+  // search simplu elastic search
   async searchFs(context) {
     if (context.state.loading === true) {
       return;
@@ -34,7 +47,8 @@ export default {
     context.commit('updatePageResults', res.result);
   },
 
-  async queryFs(context, payload) {
+  // query elastic search
+  async queryFs(context) {
     if (context.state.loading === true) {
       return;
     }
@@ -44,9 +58,8 @@ export default {
     try {
       const resp = await queryFirestore(
         context.state.keyword,
-        payload.sortVariable,
-        payload.sortType,
-        context.state.filters,
+        context.state.sorttype,
+        context.state.selectedFilters,
         context.state.currentPage,
         context.state.elPerPage
       );

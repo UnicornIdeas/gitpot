@@ -87,14 +87,11 @@ export default {
     });
   },
   methods: {
-    ...mapActions(['searchFs']),
+    ...mapActions(['queryFs']),
     ...mapMutations(['updateKeyword']),
     search() {
-      if (this.searchValue.length === 0) {
-        return;
-      }
       this.updateKeyword(this.searchValue);
-      this.searchFs();
+      this.queryFs();
     },
     signin() {
       const user = getUser();

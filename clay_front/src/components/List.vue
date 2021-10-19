@@ -1,9 +1,21 @@
 <template>
   <v-container align-start fill-height fluid style="background-color: #f3f5f7">
-    <v-row
-      class="fill-height"
-      style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px"
-    >
+    <v-row class="fill-height" style="margin-left: 10vw; margin-right: 10vw">
+      <v-col cols="12">
+        <v-row justify="end">
+          <v-col cols="2">
+            <v-select
+              v-model="sortv"
+              dense
+              outlined
+              :items="sortItems"
+              filled
+              label="Sort by"
+              @change="sortList"
+            />
+          </v-col>
+        </v-row>
+      </v-col>
       <v-col cols="3" style="background-color: #f3f5f7">
         <v-list style="background-color: #f3f5f7">
           <v-list-item>
@@ -25,9 +37,9 @@
           </v-list-item>
           <v-divider />
           <v-list-item-group>
-            <v-list-item v-for="item in items" :key="item">
+            <v-list-item v-for="item in tags" :key="item">
               <v-list-item-action>
-                <v-checkbox v-model="selectedFilters" :value="item" />
+                <v-checkbox v-model="filters" :value="item" />
               </v-list-item-action>
               <v-list-item-content style="text-align: left">
                 <v-list-item-title v-text="item" />
@@ -38,6 +50,7 @@
       </v-col>
       <v-col cols="9">
         <v-data-table
+          :loading="loading"
           fill-height
           hide-default-header
           :items="pageResults"
@@ -46,6 +59,9 @@
           no-data-text="No results found"
           class="elevation-1"
           style="box-shadow: unset !important; background-color: #f3f5f7"
+          :footer-props="{
+            'disable-items-per-page': true,
+          }"
         >
           <template id="result" v-slot:item="{ item }">
             <tr>
@@ -60,7 +76,7 @@
 
 <script lang="js">
 
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import Result from './Result';
 
 export default {
@@ -70,45 +86,52 @@ export default {
   },
   data() {
     return {
-      testResults: [
-        {
-          githubuser: 'PaulLeCam',
-          likes: '12545678',
-          urlpath: './packages/3id-keychain',
-          links: {
-            repository: 'https://github.com/ceramicstudio/datamodels',
-            bugs: 'https://github.com/ceramicstudio/datamodels/issues',
-            homepage: 'https://github.com/ceramicstudio/datamodels#readme',
-            npm: 'https://www.npmjs.com/package/%40datamodels%2F3id-keychain'
-          },
-          tags: ['JS', 'NATIVE'],
-          downloads: '147',
-          version: '0.1.2',
-          date: '2021-08-19T13:53:59.390Z',
-          publisher: {
-            email: 'paul@ulem.net',
-            username: 'paul_lecam',
-          },
-          description: 'Key data for 3ID',
-          author: '3Box Labs',
-          name: '3id-keychain'
-        },
-      ],
-
-      items: ['Analytics', 'Application Framework', 'Databases', 'Application Services', 'Monitoring', 'Security', 'Storage'],
-      selectedFilters: [],
+      sortItems: [
+        'likes ascending',
+        'likes descending',
+        'downloads ascending',
+        'downloads descending'],
     };
   },
   computed: {
-    ...mapState(['elNumber', 'pageResults'])
-  },
-  watch: {
-    selectedFilters(val) {
-      console.log(val);
+    ...mapState([
+      'elNumber',
+      'pageResults',
+      'loading',
+      'tags',
+      'selectedFilters',
+      'sorttype']),
+    filters: {
+      get() {
+        return this.selectedFilters;
+      },
+      set(newval) {
+        this.setFilters(newval);
+      }
+    },
+    sortv: {
+      get() {
+        return this.sorttype;
+      },
+      set(newSort) {
+        this.setSortType(newSort);
+      }
     }
   },
+  watch: {
+    filters() {
+      this.queryFs();
+    }
+  },
+  mounted() {
+    this.gettags();
+  },
   methods: {
-
+    ...mapActions(['gettags', 'queryFs']),
+    ...mapMutations(['setFilters', 'setSortType']),
+    sortList() {
+      this.queryFs();
+    }
   },
 };
 </script>

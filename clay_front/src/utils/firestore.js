@@ -1,5 +1,8 @@
-import 'firebase/compat/firestore';
+import { getApp } from 'firebase/app';
 import * as ElasticAppSearch from '@elastic/app-search-javascript';
+import {
+  getFirestore, collection, query, getDocs
+} from 'firebase/firestore';
 
 const esClient = ElasticAppSearch.createClient({
   searchKey: 'search-ii52gwnvddymy5gsbrg25o4b',
@@ -52,7 +55,7 @@ const baseOptions = {
   }
 };
 
-// interogare simpla firestore dupa keyword
+// interogare simpla elastic dupa keyword
 export async function searchFirestore(keyword, pageNumber, elPerPage) {
   const options = { ...baseOptions };
   options.page = { current: pageNumber, size: elPerPage };
@@ -74,18 +77,34 @@ export async function searchFirestore(keyword, pageNumber, elPerPage) {
   return res;
 }
 
-export async function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {
+// filtrare si interogare elastic
+export async function queryFirestore(keyword, sortVariable, filters, pageNumber, elPerPage) {
   const options = { ...baseOptions };
-  if (sortVariable === 'downloads') {
-    const sortOptions = [{ downloads: type }];
-    options.sort = sortOptions;
-  } else {
-    const sortOptions = [{ likes: type }];
-    options.sort = sortOptions;
+
+  switch (sortVariable) {
+    case 'likes ascending': {
+      options.sort = [{ likes: 'asc' }];
+      break;
+    }
+    case 'likes descending': {
+      options.sort = [{ likes: 'desc' }];
+      break;
+    }
+    case 'downloads ascending': {
+      options.sort = [{ downloads: 'asc' }];
+      break;
+    }
+    case 'downloads descending': {
+      options.sort = [{ downloads: 'desc' }];
+      break;
+    }
+    default: {
+      //
+    }
   }
+
   if (filters.length !== 0) {
-    const filterOptions = { tags: filters };
-    options.filters = filterOptions;
+    options.filters = { tags: filters };
   }
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
@@ -104,5 +123,19 @@ export async function queryFirestore(keyword, sortVariable, type, filters, pageN
   } catch (error) {
     console.log(`error interogating elastic: ${error}`);
   }
+  return res;
+}
+
+// intoarce tagurile din firestore
+export async function getTags() {
+  const app = getApp();
+  const db = getFirestore(app);
+  const q = query(collection(db, 'tags'));
+
+  const querySnapshot = await getDocs(q);
+  const res = [];
+  querySnapshot.forEach((doc) => {
+    res.push(doc.id);
+  });
   return res;
 }
