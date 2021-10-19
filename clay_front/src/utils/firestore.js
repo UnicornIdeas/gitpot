@@ -54,7 +54,7 @@ const baseOptions = {
 
 // interogare simpla firestore dupa keyword
 export async function searchFirestore(keyword, pageNumber, elPerPage) {
-  const options = {...baseOptions};
+  const options = { ...baseOptions };
   const pageOptions = { current: pageNumber, size: elPerPage };
   options.page = pageOptions;
 
@@ -76,7 +76,7 @@ export async function searchFirestore(keyword, pageNumber, elPerPage) {
 }
 
 export async function queryFirestore(keyword, sortVariable, type, filters, pageNumber, elPerPage) {
-  const options = {...baseOptions};
+  const options = { ...baseOptions };
   if (sortVariable === 'downloads') {
     const sortOptions = [{ downloads: type }];
     options.sort = sortOptions;

@@ -4,6 +4,7 @@ import Home from '../components/Home.vue';
 import HomeAppbar from '../components/HomeAppbar.vue';
 import List from '../components/List.vue';
 import ListAppbar from '../components/ListAppbar.vue';
+import Model from '../components/Model.vue';
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,11 @@ const routes = [
       appbar_view: ListAppbar,
     }
   },
+  {
+    path: '/test',
+    name: 'Model',
+    component: Model
+  }
 ];
 
 const router = new VueRouter({
