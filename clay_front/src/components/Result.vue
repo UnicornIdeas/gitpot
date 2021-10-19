@@ -8,7 +8,7 @@
               <v-img :src="getPhoto(result.githubuser.raw)" />
             </v-list-item-avatar>
             <v-list-item-content class="text-left align-self-start">
-              <v-list-item-title class="text-h6 mb-1">
+              <v-list-item-title class="text-h6 mb-1" @click="goToModel(result.name.raw)">
                 {{ result.name.raw }}
               </v-list-item-title>
               <v-list-item-subtitle>
@@ -89,6 +89,9 @@ export default {
     },
   },
   methods: {
+    goToModel(packet) {
+      this.$router.push(`/list/${packet}`);
+    },
     fDate(d) {
       return formatDate(d);
     },

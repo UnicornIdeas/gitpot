@@ -28,7 +28,7 @@ const routes = [
     }
   },
   {
-    path: '/model',
+    path: '/list/:pachet',
     name: 'Model',
     components:
     {

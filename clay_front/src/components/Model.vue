@@ -253,6 +253,9 @@ export default {
       }
     };
   },
+  created() {
+    console.log('params:', this.$route.params);
+  },
   methods: {
     copyText(text) {
       navigator.clipboard.writeText(text);
