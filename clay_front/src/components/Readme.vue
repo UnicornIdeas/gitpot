@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <vue-markdown :source="info" />
-  </div>
+  <vue-markdown :source="info" />
 </template>
 
 <script lang="js">
