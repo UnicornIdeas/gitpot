@@ -111,7 +111,7 @@
             :value="currentTab"
           >
             <readme
-              src='https://raw.githubusercontent.com/cloudacy/vue-markdown-render/master/README.md'
+              :src="testData.readme"
               v-if="currentTab === 'readme'"
             />
             <list v-if="currentTab === 'proposals'" />
@@ -240,6 +240,7 @@ export default {
         install: 'npm i vuejs-snackbar',
         repository: 'https://github.com/pulamea',
         homepage: 'https://pulamea.io/vue/vuejs-etc',
+        readme: 'https://raw.githubusercontent.com/vuejs/vue/dev/README.md',
         downloads: '500M+',
         license: 'MIT',
         unpacked_size: '20.6 kB',

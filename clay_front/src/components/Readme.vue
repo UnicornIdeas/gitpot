@@ -5,7 +5,7 @@
 </template>
 
 <script lang="js">
-import VueMarkdown from 'vue-markdown-render';
+import VueMarkdown from '@adapttive/vue-markdown';
 import axios from 'axios';
 
 export default ({
@@ -16,11 +16,10 @@ export default ({
       info: ''
     };
   },
-  beforeCreated() {
+  created() {
     axios
       .get(this.src)
       .then((response) => {
-        console.log(response.data);
         this.info = response.data;
       });
   },
