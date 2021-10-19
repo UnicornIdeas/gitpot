@@ -11,11 +11,6 @@ export default {
   changeElPerPage(state, payload) {
     state.elPerPage = payload;
   },
-  nextPage(state) {
-    if (state.currentPage < state.maxPage) {
-      state.currentPage += 1;
-    }
-  },
   previousPage(state) {
     if (state.currentPage !== 1) {
       state.currentPage -= 1;
@@ -32,6 +27,9 @@ export default {
   },
   updatePageResults(state, payload) {
     state.pageResults = payload;
+  },
+  clearPageResults(state) {
+    state.pageResults.splice(0);
   },
   updateLoading(state, payload) {
     state.loading = payload;

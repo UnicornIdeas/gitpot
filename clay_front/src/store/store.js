@@ -13,7 +13,6 @@ export default new Vuex.Store({
     filters: [],
     elPerPage: 15,
     currentPage: 1,
-    maxPage: 1,
     elNumber: 0,
     pageResults: [],
     loading: false,

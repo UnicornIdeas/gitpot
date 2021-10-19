@@ -55,8 +55,7 @@ const baseOptions = {
 // interogare simpla firestore dupa keyword
 export async function searchFirestore(keyword, pageNumber, elPerPage) {
   const options = { ...baseOptions };
-  const pageOptions = { current: pageNumber, size: elPerPage };
-  options.page = pageOptions;
+  options.page = { current: pageNumber, size: elPerPage };
 
   const res = {};
   try {
@@ -66,7 +65,7 @@ export async function searchFirestore(keyword, pageNumber, elPerPage) {
       resultList.results.forEach((resultItem) => {
         result.push(resultItem.data);
       });
-      res.itemNumber = resultList.info.meta.page.total_results;
+      res.itemsNumber = resultList.info.meta.page.total_results;
       res.result = result;
     }
   } catch (error) {
