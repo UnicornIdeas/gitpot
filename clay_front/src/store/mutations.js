@@ -33,5 +33,15 @@ export default {
   },
   updateLoading(state, payload) {
     state.loading = payload;
+  },
+  addtags(state, taglist) {
+    state.tags = taglist;
+  },
+  setFilters(state, filters) {
+    state.selectedFilters.splice(0);
+    state.selectedFilters = filters;
+  },
+  setSortType(state, sortT) {
+    state.sorttype = sortT;
   }
 };

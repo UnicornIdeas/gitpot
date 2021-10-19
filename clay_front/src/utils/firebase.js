@@ -5,14 +5,6 @@ export function login() {
 
   const auth = getAuth();
   return signInWithPopup(auth, provider);
-  // .then((result) => {
-  //   const credential = GithubAuthProvider.credentialFromResult(result);
-  //   console.log(result);
-  //   console.log(credential);
-  //   console.log(result.user);
-  // }).catch((error) => {
-  //   console.log(error);
-  // });
 }
 
 export function getUser() {

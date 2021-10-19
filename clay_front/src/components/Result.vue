@@ -88,9 +88,6 @@ export default {
       return JSON.parse(this.result.publisher.raw).username;
     },
   },
-  mounted() {
-    console.log(this.result); // db
-  },
   methods: {
     fDate(d) {
       return formatDate(d);
