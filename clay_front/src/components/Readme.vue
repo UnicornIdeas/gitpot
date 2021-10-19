@@ -5,27 +5,26 @@
 </template>
 
 <script lang="js">
-import VueMarkdown from 'vue-markdown-render';
 import axios from 'axios';
+import VueMarkdown from '@adapttive/vue-markdown';
 
 export default ({
   name: 'Readme',
+  components: {
+    VueMarkdown
+  },
   props: ['src'],
   data() {
     return {
       info: ''
     };
   },
-  beforeCreated() {
+  mounted() {
     axios
       .get(this.src)
       .then((response) => {
-        console.log(response.data);
         this.info = response.data;
       });
-  },
-  components: {
-    VueMarkdown
   }
 });
 </script>
