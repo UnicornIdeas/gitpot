@@ -28,9 +28,13 @@ const routes = [
     }
   },
   {
-    path: '/test',
+    path: '/model',
     name: 'Model',
-    component: Model
+    components:
+    {
+      main_view: Model,
+      appbar_view: ListAppbar,
+    }
   }
 ];
 
