@@ -78,10 +78,7 @@
 
         <v-tabs-items v-model="currentTab">
           <v-tab-item :value="currentTab">
-            <readme
-              v-if="currentTab === 'readme'"
-              src="https://raw.githubusercontent.com/ceramicstudio/datamodels/main/packages/3id-keychain/README.md"
-            />
+            <readme v-if="currentTab === 'readme'" :src="testData.readme" />
             <list v-if="currentTab === 'proposals'" />
           </v-tab-item>
         </v-tabs-items>
@@ -205,6 +202,7 @@ export default {
         install: 'npm i vuejs-snackbar',
         repository: 'https://github.com/pulamea',
         homepage: 'https://pulamea.io/vue/vuejs-etc',
+        readme: 'https://raw.githubusercontent.com/vuejs/vue/dev/README.md',
         downloads: '500M+',
         license: 'MIT',
         unpacked_size: '20.6 kB',

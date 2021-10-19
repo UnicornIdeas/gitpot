@@ -15,6 +15,7 @@
     "@mdi/react": "^1.5.0",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "axios": "^0.23.0",
+    "babel-runtime": "^6.26.0",
     "core-js": "^3.6.5",
     "eslint-config-airbnb-base": "^14.2.1",
     "firebase": "^9.1.3",

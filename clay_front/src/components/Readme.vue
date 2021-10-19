@@ -5,8 +5,8 @@
 </template>
 
 <script lang="js">
-import axios from 'axios';
 import VueMarkdown from '@adapttive/vue-markdown';
+import axios from 'axios';
 
 export default ({
   name: 'Readme',
@@ -19,7 +19,7 @@ export default ({
       info: ''
     };
   },
-  mounted() {
+  created() {
     axios
       .get(this.src)
       .then((response) => {
