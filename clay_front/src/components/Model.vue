@@ -111,7 +111,7 @@
             :value="currentTab"
           >
             <readme
-              src="https://github.com/cloudacy/vue-markdown-render/blob/master/example/src/index.ts"
+              src='https://raw.githubusercontent.com/cloudacy/vue-markdown-render/master/README.md'
               v-if="currentTab === 'readme'"
             />
             <list v-if="currentTab === 'proposals'" />

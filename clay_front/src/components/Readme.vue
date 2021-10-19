@@ -11,27 +11,18 @@ import axios from 'axios';
 export default ({
   name: 'Readme',
   props: ['src'],
-  //   props: {
-  //     src: {
-  //       type: String,
-  //     },
-  //   },
   data() {
     return {
-      info: null
+      info: ''
     };
   },
-  mounted() {
-    console.log(this.src);
-    const url = this.src;
+  beforeCreated() {
     axios
-      .get(url)
+      .get(this.src)
       .then((response) => {
-        this.info = response;
+        console.log(response.data);
+        this.info = response.data;
       });
-  },
-  created() {
-    console.log(this.src);
   },
   components: {
     VueMarkdown
