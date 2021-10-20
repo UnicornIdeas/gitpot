@@ -51,7 +51,10 @@ const baseOptions = {
     },
     version: {
       raw: {}
-    }
+    },
+    proposals: {
+      raw: {}
+    },
   }
 };
 

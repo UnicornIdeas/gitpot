@@ -108,7 +108,11 @@
         <v-tabs-items v-model="currentTab">
           <v-tab-item :value="currentTab">
             <readme v-if="currentTab === 'readme'" :src="testData.readme" />
-            <list v-if="currentTab === 'proposals'" />
+            <topics
+              v-if="currentTab === 'proposals'"
+              :src="testData.proposals"
+            />
+            <thread v-if="currentTab === 'example'" />
           </v-tab-item>
         </v-tabs-items>
       </v-col>
@@ -214,14 +218,16 @@
 </template>
 
 <script>
-import List from './List.vue';
 import Readme from './Readme.vue';
 import { abbreviateNumber } from '@/utils/utils';
+import Topics from './Topics.vue';
+import Thread from './Thread.vue';
 
 export default {
   components: {
-    list: List,
     readme: Readme,
+    topics: Topics,
+    thread: Thread,
   },
   data() {
     return {
@@ -244,6 +250,10 @@ export default {
         likes: '1,4K',
       },
     };
+  },
+  created() {
+    console.log('params:', this.$route.params.pachet);
+    console.log(this.$store.getters.getModel(this.$route.params.pachet));
   },
   methods: {
     copyText(text) {
