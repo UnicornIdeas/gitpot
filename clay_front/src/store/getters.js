@@ -5,13 +5,14 @@ export default {
   getCurrentPage: (state) => state.currentPage,
   getElementsNumber: (state) => state.elNumber,
   getPageResults: (state) => state.pageResults,
-
-  getModel(state, keyword) {
+  getModel: (state) => (keyword) => {
+    console.log(keyword);
+    console.log(state);
     state.pageResults.forEach((res) => {
+      console.log(res.name);
       if (res.name.raw === keyword) {
         return res;
       }
-      return false;
     });
     return null;
   }

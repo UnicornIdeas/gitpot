@@ -216,7 +216,8 @@ export default {
     };
   },
   created() {
-    console.log('params:', this.$route.params);
+    console.log('params:', this.$route.params.pachet);
+    console.log(this.$store.getters.getModel(this.$route.params.pachet));
   },
   methods: {
     copyText(text) {
