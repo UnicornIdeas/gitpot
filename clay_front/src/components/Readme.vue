@@ -24,13 +24,9 @@ export default ({
     axios
       .get(this.src)
       .then((response) => {
-<<<<<<< HEAD
-        this.info = md.render(response.data);
-=======
         if (response.data !== null && response.status === 200) {
           this.info = md.render(response.data);
         }
->>>>>>> 1d9f1f0dbf4a665128a9424d7c45cfa5b72d396e
       });
   }
 });
