@@ -4,9 +4,10 @@
     elevation="0"
   >
     <v-card-text>
-      <v-row>
+      <v-row align="center">
         <v-col cols=1>
           <v-btn
+            v-if="topic.type === 'discussion'"
             :height=50
             :width=50
             rounded
@@ -20,6 +21,7 @@
             >mdi-forum</v-icon>
           </v-btn>
           <v-btn
+            v-if="topic.type === 'thread'"
             :height=50
             :width=50
             rounded
@@ -33,24 +35,45 @@
             >mdi-lightbulb-outline</v-icon>
           </v-btn>
         </v-col>
-        <v-col cols=9 align="start">
-            THIS INFO CRAP GOES IN HERE AND THERE BLA BLA BLA AAAND THE FUCKING DATE
+        <v-col cols=8 align="start">
+          <v-col cols=12>
+            {{ topic.description }}
+          </v-col>
+          <v-col cols=12>
+            {{ topic.date }}
+          </v-col>
         </v-col>
-        <v-col cols=2>
+        <v-col cols=3>
           <v-btn
             outlined
             rounded
           >
-            <v-icon>mdi-arrow-up</v-icon>20
+            <v-icon>mdi-arrow-up</v-icon>{{ topic.likes }}
           </v-btn>
           <v-btn
             outlined
             rounded
           >
-              <v-icon>mdi-comment</v-icon>15
+            <v-icon
+              outlined
+              color="gray"
+            >mdi-comment</v-icon>{{ topic.comments }}
           </v-btn>
         </v-col>
       </v-row>
     </v-card-text>
   </v-card>
 </template>
+
+<script>
+export default {
+  name: 'Topic',
+  props: ['topic'],
+  created() {
+  },
+};
+</script>
+
+<style scoped>
+
+</style>

@@ -27,7 +27,6 @@ export default ({
       .get(this.src)
       .then((response) => {
         this.info = md.render(response.data);
-        console.log(this.info);// dbg
       });
   }
 });

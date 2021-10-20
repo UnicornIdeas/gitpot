@@ -92,6 +92,9 @@ export default {
   data() {
     return {};
   },
+  created() {
+    console.log(this.result);
+  },
   computed: {
     publisherName() {
       return JSON.parse(this.result.publisher.raw).username;

@@ -5,7 +5,8 @@ import HomeAppbar from '../components/HomeAppbar.vue';
 import List from '../components/List.vue';
 import ListAppbar from '../components/ListAppbar.vue';
 import Model from '../components/Model.vue';
-import Topics from '../components/Topic.vue';
+import Topics from '../components/Topics.vue';
+import Thread from '../components/Thread.vue';
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,14 @@ const routes = [
     components:
     {
       main_view: Topics,
+    }
+  },
+  {
+    path: '/thread',
+    name: 'Thread',
+    components:
+    {
+      main_view: Thread,
     }
   }
 ];

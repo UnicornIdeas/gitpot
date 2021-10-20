@@ -76,7 +76,8 @@
         <v-tabs-items v-model="currentTab">
           <v-tab-item :value="currentTab">
             <readme v-if="currentTab === 'readme'" :src="testData.readme" />
-            <list v-if="currentTab === 'proposals'" />
+            <topics v-if="currentTab === 'proposals'" :src="testData.proposals" />
+            <thread v-if="currentTab === 'example'" />
           </v-tab-item>
         </v-tabs-items>
       </v-col>
@@ -182,13 +183,15 @@
 </template>
 
 <script>
-import List from './List.vue';
 import Readme from './Readme.vue';
+import Topics from './Topics.vue';
+import Thread from './Thread.vue';
 
 export default {
   components: {
-    list: List,
     readme: Readme,
+    topics: Topics,
+    thread: Thread,
   },
   data() {
     return {

@@ -38,6 +38,7 @@ module.exports = {
         'state',
       ]
     }],
+    'consistent-return': 'off',
     'linebreak-style': ['error', 'windows'],
     'no-console': 'off',
     'comma-dangle': 'off',
