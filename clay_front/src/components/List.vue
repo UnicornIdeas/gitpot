@@ -148,7 +148,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.pageResults);
     this.gettags();
   },
   methods: {

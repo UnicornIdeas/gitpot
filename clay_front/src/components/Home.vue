@@ -29,30 +29,6 @@
                   <v-icon large color="deep-orange"> mdi-magnify </v-icon>
                 </v-btn>
               </template>
-              <template #prepend-inner>
-                <v-menu offset-y>
-                  <template #activator="{ on, attrs }">
-                    <v-btn
-                      rounded
-                      color="#ff5722"
-                      text
-                      dense
-                      small
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      Filters
-                      <v-icon>mdi-menu-down</v-icon>
-                    </v-btn>
-                    <v-divider vertical class="mr-3" />
-                  </template>
-                  <v-list v-model="selectedFilters">
-                    <v-list-item v-for="item in filters" :key="item">
-                      <v-list-item-title>{{ item }}</v-list-item-title>
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-              </template>
             </v-text-field>
           </v-col>
         </v-row>
@@ -92,17 +68,12 @@ export default {
   data() {
     return {
       searchValue: '',
-      filters: ['REACT', 'JS', 'DART'],
-      selectedFilters: []
     };
   },
   methods: {
     ...mapActions(['searchFs']),
     ...mapMutations(['updateKeyword']),
     search() {
-      if (this.searchValue.length === 0) {
-        return;
-      }
       this.updateKeyword(this.searchValue);
       this.searchFs();
       this.$router.push('/list');

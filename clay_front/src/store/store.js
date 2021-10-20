@@ -10,8 +10,7 @@ Vue.config.productionTip = false;
 export default new Vuex.Store({
   state: {
     keyword: '',
-    elPerPage: 1,
-    currentPage: 1,
+    elPerPage: 15,
     elNumber: 0,
     pageResults: [],
     loading: false,

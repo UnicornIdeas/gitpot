@@ -27,7 +27,7 @@ export default {
     try {
       const resp = await searchFirestore(
         context.state.keyword,
-        context.state.currentPage,
+        context.state.pagination.page,
         context.state.elPerPage
       );
       if (resp !== null) {

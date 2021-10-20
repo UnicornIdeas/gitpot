@@ -92,9 +92,6 @@ export default {
       return JSON.parse(this.result.publisher.raw).username;
     },
   },
-  created() {
-    console.log(this.result);
-  },
   methods: {
     goToModel(packet) {
       this.$router.push(`/list/${packet}`);
