@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height align-start justify-center>
+  <v-container fluid>
     <v-row
       style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px"
       no-gutters
@@ -43,10 +43,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row
-      class="fill-height"
-      style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px"
-    >
+    <v-row style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px">
       <v-col cols="8">
         <v-tabs v-model="currentTab" grow centered style="color: white">
           <v-tabs-slider color="transparent" />

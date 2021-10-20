@@ -1,16 +1,21 @@
 <template>
-  <vue-markdown :source="info" />
+  <span v-html="info">
+    <!-- {{ info }} -->
+  </span>
 </template>
 
 <script lang="js">
-import VueMarkdown from '@adapttive/vue-markdown';
 import axios from 'axios';
+
+const md = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true,
+  breaks: true,
+});
 
 export default ({
   name: 'Readme',
-  components: {
-    VueMarkdown
-  },
   props: ['src'],
   data() {
     return {
@@ -21,8 +26,17 @@ export default ({
     axios
       .get(this.src)
       .then((response) => {
-        this.info = response.data;
+        this.info = md.render(response.data);
+        console.log(this.info);// dbg
       });
   }
 });
 </script>
+
+<style scoped>
+table,
+th,
+td {
+  border: 1px solid black;
+}
+</style>

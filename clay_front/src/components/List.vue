@@ -1,6 +1,6 @@
 <template>
   <v-container align-start fill-height fluid style="background-color: #f3f5f7">
-    <v-row class="fill-height" style="margin-left: 10vw; margin-right: 10vw">
+    <v-row style="margin-left: 10vw; margin-right: 10vw">
       <v-col cols="12">
         <v-row justify="end">
           <v-col cols="2">
