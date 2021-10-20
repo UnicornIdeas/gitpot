@@ -1,7 +1,5 @@
 <template>
-  <span v-html="info">
-    <!-- {{ info }} -->
-  </span>
+  <span class="a" v-html="info" />
 </template>
 
 <script lang="js">
@@ -26,17 +24,27 @@ export default ({
     axios
       .get(this.src)
       .then((response) => {
-        this.info = md.render(response.data);
-        console.log(this.info);// dbg
+        if (response.data !== null && response.status === 200) {
+          this.info = md.render(response.data);
+        }
       });
   }
 });
 </script>
 
 <style scoped>
-table,
-th,
-td {
-  border: 1px solid black;
+.a >>> table,
+.a >>> th,
+.a >>> td,
+.a >>> tr {
+  border: 1px solid black !important;
+  border-collapse: collapse;
+}
+
+.a >>> td {
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 </style>

@@ -60,7 +60,7 @@
 
 <script>
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { mapActions, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 import { login, getUser } from '@/utils/firebase';
 
 export default {
@@ -87,11 +87,9 @@ export default {
     });
   },
   methods: {
-    ...mapActions(['queryFs']),
     ...mapMutations(['updateKeyword']),
     search() {
       this.updateKeyword(this.searchValue);
-      this.queryFs();
     },
     signin() {
       const user = getUser();

@@ -106,12 +106,15 @@ export async function queryFirestore(keyword, sortVariable, filters, pageNumber,
   if (filters.length !== 0) {
     options.filters = { tags: filters };
   }
-  const pageOptions = { current: pageNumber, size: elPerPage };
-  options.page = pageOptions;
+  options.page = { current: pageNumber, size: elPerPage };
 
   const res = {};
   try {
-    const resultList = await esClient.search(keyword, options);
+    let kwd = '';
+    if (keyword !== null) {
+      kwd = keyword;
+    }
+    const resultList = await esClient.search(kwd, options);
     if (resultList !== null) {
       const result = [];
       resultList.results.forEach((resultItem) => {

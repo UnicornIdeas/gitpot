@@ -8,16 +8,11 @@ export default {
   clearFilters(state) {
     state.filters = [];
   },
-  changeElPerPage(state, payload) {
-    state.elPerPage = payload;
+  setPagination(state, newpag) {
+    state.pagination = newpag;
   },
-  previousPage(state) {
-    if (state.currentPage !== 1) {
-      state.currentPage -= 1;
-    }
-  },
-  resetPage(state) {
-    state.currentPage = 1;
+  setPage(state, pagenumber) {
+    state.pagination.page = pagenumber;
   },
   updateElementsNumber(state, payload) {
     state.elNumber = payload;

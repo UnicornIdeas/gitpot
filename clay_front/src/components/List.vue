@@ -54,13 +54,15 @@
           fill-height
           hide-default-header
           :items="pageResults"
+          :items-per-page="elPerPage"
           :server-items-length="elNumber"
-          :items-per-page="15"
+          :options.sync="pag"
           no-data-text="No results found"
           class="elevation-1"
           style="box-shadow: unset !important; background-color: #f3f5f7"
           :footer-props="{
             'disable-items-per-page': true,
+            itemsPerPageOptions: [elPerPage],
           }"
         >
           <template id="result" v-slot:item="{ item }">
@@ -100,7 +102,10 @@ export default {
       'loading',
       'tags',
       'selectedFilters',
-      'sorttype']),
+      'sorttype',
+      'elPerPage',
+      'pagination',
+      'keyword']),
     filters: {
       get() {
         return this.selectedFilters;
@@ -116,10 +121,29 @@ export default {
       set(newSort) {
         this.setSortType(newSort);
       }
-    }
+    },
+    pag: {
+      get() {
+        return this.pagination;
+      },
+      set(newPagination) {
+        this.setPagination(newPagination);
+      }
+    },
   },
   watch: {
     filters() {
+      this.setPage(1);
+      this.queryFs();
+    },
+    pagination: {
+      handler() {
+        this.queryFs();
+      },
+      deep: true,
+    },
+    keyword() {
+      this.setPage(1);
       this.queryFs();
     }
   },
@@ -128,8 +152,13 @@ export default {
   },
   methods: {
     ...mapActions(['gettags', 'queryFs']),
-    ...mapMutations(['setFilters', 'setSortType']),
+    ...mapMutations([
+      'setFilters',
+      'setSortType',
+      'setPagination',
+      'setPage']),
     sortList() {
+      this.setPage(1);
       this.queryFs();
     }
   },
