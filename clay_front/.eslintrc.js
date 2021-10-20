@@ -41,8 +41,6 @@ module.exports = {
     'indent': 'off',
     'no-tabs': 'off',
     'consistent-return': 'off',
-    // 'linebreak-style': ['error', 'windows'],
-    "linebreak-style": 0,
     'no-console': 'off',
     'comma-dangle': 'off',
     'class-methods-use-this': 'off',
@@ -50,7 +48,7 @@ module.exports = {
     'import/extensions': 'off',
     'implicit-arrow-linebreak': 'off',
     'import/prefer-default-export': 'off',
-    'linebreak-style': ["error", "windows"],
+    'linebreak-style': ["error", "unix"],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'vue/component-name-in-template-casing': [
       'error',
