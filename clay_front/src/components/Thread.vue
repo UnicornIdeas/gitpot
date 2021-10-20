@@ -4,33 +4,47 @@
     fill-height
     align-start
   >
-    <v-row>
-      <v-col cols=12 justify="start" align="start" style="background-color: pink">
+    <v-row style="background-color: #f3f5f7">
+      <v-col cols=12 justify="start" align="start">
         <v-col cols=12 style="font-weight: bold">
           {{ testData.title }}
         </v-col>
         <v-col cols=12>
-          {{ testData.author }} created {{ testData.date }}
+          <v-list-item three-line>
+            <v-list-item-avatar tile>
+              <v-img :src="getPhoto(testData.author)" />
+            </v-list-item-avatar>
+            <v-list-item-content class="text-left align-self-start">
+              <v-list-item-subtitle>
+                <a>{{ testData.author }}</a> started topic
+                <i>{{ fDate(testData.date) }}</i>
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
         </v-col>
         <v-col cols=12>
           {{ testData.thread }}
         </v-col>
-        <v-col cols=12 v-if="testData.commentsNumber === 1">
+        <v-col cols=12 v-if="testData.commentsNumber === 1" style="font-weight: bold; color: blue">
           {{ testData.commentsNumber }} Comment
         </v-col>
         <v-col cols=12 v-else-if="testData.commentsNumber !== 1">
           {{ testData.commentsNumber }} Comments
         </v-col>
       </v-col>
-      <v-col cols=12 style="background-color: cyan" align="start" justify="start">
+      <v-col cols=12 align="start" justify="start">
         <v-col cols=12 v-for="comment in testData.comments" :key="comment">
           {{ comment.author }}
           {{ comment.date }}
           {{ comment.comment}}
         </v-col>
       </v-col>
-      <v-col cols=12 style="background-color: teal">
-        {WRITE COMMNET TEXT INPUT}
+      <v-col cols=12>
+        <v-text-field
+          v-model="inputComment"
+          label="Write a comment"
+          required
+        ></v-text-field>
       </v-col>
       <v-col cols=2 offset=9 justify="end" align="end">
         <v-btn>COMMENT</v-btn>
@@ -40,11 +54,15 @@
 </template>
 
 <script>
+import { formatDate, getUserPhoto, abbreviateNumber } from '@/utils/utils';
+
 export default {
   name: 'Thread',
   props: ['topicId'],
   data() {
     return {
+      inputComment: '',
+      newComment: { author: '', comment: '', date: '' },
       testData: {
         title: 'NiFTY News - a schema.org + NFT concept for news delivery and translation mgmt in ceramic #25',
         author: 'alibama',
@@ -65,6 +83,17 @@ export default {
         ]
       }
     };
+  },
+  methods: {
+    fDate(d) {
+      return formatDate(d);
+    },
+    getPhoto(uname) {
+      return getUserPhoto(uname);
+    },
+    abbr(v) {
+      return abbreviateNumber(v);
+    },
   }
 };
 </script>

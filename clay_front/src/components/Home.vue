@@ -86,6 +86,7 @@
 
 <script lang="js">
 import { mapActions, mapMutations } from 'vuex';
+import { getComments } from '@/utils/firestore.js';
 
 export default {
   name: 'Home',
@@ -95,6 +96,11 @@ export default {
       filters: ['REACT', 'JS', 'DART'],
       selectedFilters: []
     };
+  },
+  created() {
+    getComments('4GmpXF9uGoJu8lKuNJPO').then((res) => {
+      console.log(res);
+    });
   },
   methods: {
     ...mapActions(['searchFs']),
