@@ -4,13 +4,14 @@
 			<v-col cols=12>
         <v-list-item three-line>
           <v-list-item-avatar tile>
-            <v-img :src="getPhoto(testComment.author)" />
+            <v-img :src="getPhoto(comment.author)" />
           </v-list-item-avatar>
           <v-list-item-content class="text-left align-self-start">
             <v-list-item-subtitle>
-              <a>{{ testComment.author }}</a> started topic
-              <i>{{ fDate(testComment.date) }}</i>
+              <a>{{ comment.author }}</a> -
+							<i>{{ ago(comment.date) }}</i>
             </v-list-item-subtitle>
+						{{ comment.comment }}
           </v-list-item-content>
         </v-list-item>
       </v-col>
@@ -19,29 +20,24 @@
 </template>
 
 <script>
-import { formatDate, getUserPhoto, abbreviateNumber } from '@/utils/utils';
+import moment from 'moment';
+import { getUserPhoto } from '@/utils/utils';
 
 export default {
   name: 'Comment',
   props: ['comment'],
+  components: {
+	},
   data() {
     return {
-			testComment: {
-				author: 'alibama',
-				date: '10 years ago',
-				comment: 'amsdioams asmdioasd aimosd12 12mio13 ?'
-			}
-		}
+		};
 	},
   methods: {
-    fDate(d) {
-      return formatDate(d);
-    },
+		ago(d) {
+			return moment(d).fromNow();
+		},
     getPhoto(uname) {
       return getUserPhoto(uname);
-    },
-    abbr(v) {
-      return abbreviateNumber(v);
     },
   }
 };
