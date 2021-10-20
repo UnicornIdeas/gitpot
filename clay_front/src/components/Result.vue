@@ -1,14 +1,23 @@
 <template>
-  <v-card color="#e9edf0" elevation="0">
+  <v-card
+    color="#e9edf0"
+    elevation="0"
+  >
     <v-card-text>
       <v-row>
         <v-col cols="6">
           <v-list-item three-line>
-            <v-list-item-avatar tile size="60">
+            <v-list-item-avatar
+              tile
+              size="60"
+            >
               <v-img :src="getPhoto(result.githubuser.raw)" />
             </v-list-item-avatar>
             <v-list-item-content class="text-left align-self-start">
-              <v-list-item-title class="text-h6 mb-1" @click="goToModel(result.name.raw)">
+              <v-list-item-title
+                class="text-h6 mb-1"
+                @click="goToModel(result.name.raw)"
+              >
                 {{ result.name.raw }}
               </v-list-item-title>
               <v-list-item-subtitle>

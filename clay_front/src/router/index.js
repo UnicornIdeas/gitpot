@@ -5,6 +5,7 @@ import HomeAppbar from '../components/HomeAppbar.vue';
 import List from '../components/List.vue';
 import ListAppbar from '../components/ListAppbar.vue';
 import Model from '../components/Model.vue';
+import Topics from '../components/Topic.vue';
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,14 @@ const routes = [
     {
       main_view: Model,
       appbar_view: ListAppbar,
+    }
+  },
+  {
+    path: '/topics',
+    name: 'Topics',
+    components:
+    {
+      main_view: Topics,
     }
   }
 ];
