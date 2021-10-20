@@ -10,7 +10,7 @@ Vue.config.productionTip = false;
 export default new Vuex.Store({
   state: {
     keyword: '',
-    elPerPage: 15,
+    elPerPage: 1,
     currentPage: 1,
     elNumber: 0,
     pageResults: [],
@@ -18,6 +18,7 @@ export default new Vuex.Store({
     tags: [],
     selectedFilters: [],
     sorttype: '',
+    pagination: {},
   },
   getters,
   mutations,

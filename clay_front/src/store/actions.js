@@ -53,6 +53,8 @@ export default {
       return;
     }
 
+    context.commit('clearPageResults');
+
     let res = null;
     context.commit('updateLoading', true);
     try {
@@ -60,7 +62,7 @@ export default {
         context.state.keyword,
         context.state.sorttype,
         context.state.selectedFilters,
-        context.state.currentPage,
+        context.state.pagination.page,
         context.state.elPerPage
       );
       if (resp !== null) {
@@ -76,7 +78,6 @@ export default {
       return;
     }
 
-    console.log(res);// dbg
     context.commit('updateElementsNumber', res.itemNumber);
     context.commit('updatePageResults', res.result);
     context.commit('updateLoading', false);

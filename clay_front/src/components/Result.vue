@@ -16,6 +16,10 @@
             <v-list-item-content class="text-left align-self-start">
               <v-list-item-title
                 class="text-h6 mb-1"
+<<<<<<< HEAD
+=======
+                style="cursor: pointer"
+>>>>>>> 1d9f1f0dbf4a665128a9424d7c45cfa5b72d396e
                 @click="goToModel(result.name.raw)"
               >
                 {{ result.name.raw }}

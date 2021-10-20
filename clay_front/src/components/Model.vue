@@ -215,10 +215,13 @@ export default {
       },
     };
   },
+<<<<<<< HEAD
   created() {
     console.log('params:', this.$route.params.pachet);
     console.log(this.$store.getters.getModel(this.$route.params.pachet));
   },
+=======
+>>>>>>> 1d9f1f0dbf4a665128a9424d7c45cfa5b72d396e
   methods: {
     copyText(text) {
       navigator.clipboard.writeText(text);
