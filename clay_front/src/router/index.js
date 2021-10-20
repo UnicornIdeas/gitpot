@@ -56,7 +56,7 @@ const routes = [
     }
   },
   {
-    path: 'comment',
+    path: '/comment',
     name: 'Comment',
     components:
     {
