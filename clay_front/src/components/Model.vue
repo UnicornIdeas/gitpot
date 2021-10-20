@@ -1,46 +1,78 @@
 <template>
-  <v-container fluid>
+  <v-container fluid style="background-color: #f3f5f7">
     <v-row
       style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px"
       no-gutters
     >
-      <v-col cols="10" style="background-color: #f3f5f7" align="start">
-        <v-col cols="12" style="font-weight: bold">
-          {{ testData.name }}
-        </v-col>
-        <v-col cols="12">
-          {{ testData.version }}
-          &#9679; Published by
-          {{ testData.publisher }}
-          &#9679;
-          {{ testData.date }}
-        </v-col>
-        <v-row>
-          <v-col cols="12">
-            <v-btn
-              v-for="tag in testData.tags"
-              :key="tag"
-              small
-              style="color: black"
-              color="#aed0ff"
-              class="mx-1"
-              depressed
-            >
-              {{ tag }}
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col cols="2" style="background-color: #f3f5f7">
-        <v-row align="center">
-          <v-col cols="6" align="end">
-            <v-icon large> mdi-thumb-up </v-icon>
-          </v-col>
-          <v-col cols="6" align="start">
-            <v-row>{{ testData.likes }}</v-row>
-            <v-row>Likes</v-row>
-          </v-col>
-        </v-row>
+      <v-col cols="12">
+        <v-card color="#e9edf0" elevation="0">
+          <v-card-text>
+            <v-row no-gutters>
+              <v-col cols="9">
+                <v-list-item two-line>
+                  <v-list-item-content class="text-left align-self-start">
+                    <v-list-item-title
+                      class="text-h6 mb-1"
+                      style="cursor: pointer"
+                      @click="goToModel(result.name.raw)"
+                    >
+                      {{ testData.name }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      {{ testData.version }}
+                      &#9679; Published by
+                      {{ testData.publisher }}
+                      &#9679;
+                      {{ testData.date }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-col>
+              <v-col cols="3">
+                <v-row class="justify-end align-top">
+                  <v-col md="auto">
+                    <v-row no-gutters>
+                      <v-col>
+                        <v-icon large> mdi-thumb-up </v-icon>
+                      </v-col>
+                    </v-row>
+                    <v-row no-gutters>
+                      <v-col>
+                        <b> {{ abbr(testData.likes) }}</b>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+                <!-- <v-row class="justify-end align-top">
+                  <v-col cols="6" align="end">
+                    <v-icon large> mdi-thumb-up </v-icon>
+                  </v-col>
+                  <v-col cols="6" align="start">
+                    <v-row>{{ testData.likes }}</v-row>
+                    <v-row>Likes</v-row>
+                  </v-col>
+                </v-row> -->
+              </v-col>
+            </v-row>
+          </v-card-text>
+          <v-card-actions>
+            <v-col cols="8">
+              <v-row>
+                <v-btn
+                  v-for="tag in testData.tags"
+                  :key="tag"
+                  x-small
+                  style="color: black"
+                  color="#aed0ff"
+                  class="mx-1"
+                  depressed
+                >
+                  {{ tag }}
+                </v-btn>
+              </v-row>
+            </v-col>
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
     <v-row style="margin-left: 10vw; margin-right: 10vw; margin-top: 10px">
@@ -184,6 +216,7 @@
 <script>
 import List from './List.vue';
 import Readme from './Readme.vue';
+import { abbreviateNumber } from '@/utils/utils';
 
 export default {
   components: {
@@ -215,6 +248,9 @@ export default {
   methods: {
     copyText(text) {
       navigator.clipboard.writeText(text);
+    },
+    abbr(v) {
+      return abbreviateNumber(v);
     },
   },
 };
