@@ -7,6 +7,7 @@ import ListAppbar from '../components/ListAppbar.vue';
 import Model from '../components/Model.vue';
 import Topics from '../components/Topics.vue';
 import Thread from '../components/Thread.vue';
+import Comment from '../components/Comment.vue';
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,14 @@ const routes = [
     components:
     {
       main_view: Thread,
+    }
+  },
+  {
+    path: '/comment',
+    name: 'Comment',
+    components:
+    {
+      main_view: Comment,
     }
   }
 ];

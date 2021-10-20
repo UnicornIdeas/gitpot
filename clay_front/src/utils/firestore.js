@@ -140,8 +140,20 @@ export async function getTags() {
 
   const querySnapshot = await getDocs(q);
   const res = [];
-  querySnapshot.forEach((doc) => {
-    res.push(doc.id);
+  querySnapshot.forEach((docc) => {
+    res.push(docc.id);
+  });
+  return res;
+}
+// returns all comments from a topic
+export async function getComments(id) {
+  const app = getApp();
+  const db = getFirestore(app);
+  const q = query(collection(db, 'proposals', id, 'comments'));
+  const querySnapshot = await getDocs(q);
+  const res = [];
+  querySnapshot.forEach((docc) => {
+    res.push(docc.data());
   });
   return res;
 }

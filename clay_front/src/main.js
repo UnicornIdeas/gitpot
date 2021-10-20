@@ -1,9 +1,12 @@
 import firebase from 'firebase/compat/app';
 import Vue from 'vue';
+import moment from 'moment';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import router from './router';
 import store from './store/store.js';
+
+Vue.prototype.moment = moment;
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBjD5-MT-lSqtQoOc7snVGHHqkSkHjrtMY',
