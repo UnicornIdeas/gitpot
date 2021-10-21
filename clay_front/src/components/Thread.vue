@@ -98,7 +98,7 @@ export default {
         date: '2021-08-18T13:53:59.390Z',
         thread:
           'Property Description Value Max Size Required Example ceramic stream for nft reference to another stream build in???',
-        commentsNumber: 1,
+        commentsNumber: 2,
         comments: [
           {
             author: 'a1',
