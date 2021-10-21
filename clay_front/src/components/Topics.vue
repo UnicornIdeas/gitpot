@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field v-model="title" label="New proposal title" />
+    <!-- <v-text-field v-model="title" label="New proposal title" />
     <v-textarea
       v-model="message"
       label="Proposal message"
@@ -16,7 +16,7 @@
     />
     <v-btn class="mt-2 mb-2" color="green" @click="createproposal">
       Add new proposal
-    </v-btn>
+    </v-btn> -->
     <v-data-table
       fill-height
       hide-default-header
