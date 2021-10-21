@@ -29,7 +29,7 @@ export default {
   components: {
     Topic,
   },
-  props: ['topics'],
+  props: ['topics', 'topicId'],
   data() {
     return {
       loading: false,
