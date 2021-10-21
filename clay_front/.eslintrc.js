@@ -38,7 +38,6 @@ module.exports = {
         'state',
       ]
     }],
-    'linebreak-style': 'off',
     'indent': 'off',
     'no-tabs': 'off',
     'consistent-return': 'off',

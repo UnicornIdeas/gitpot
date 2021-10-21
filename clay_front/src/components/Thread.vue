@@ -1,5 +1,9 @@
 <template>
-  <v-container fluid fill-height align-start>
+  <v-container
+    fluid
+    fill-height
+    align-start
+  >
     <v-row style="background-color: #f3f5f7">
       <v-col cols="12" justify="start" align="start">
         <v-col cols="12" style="font-weight: bold; font-size: 25px">
@@ -37,13 +41,11 @@
           {{ testData.commentsNumber }} Comments
         </v-col>
       </v-col>
-      <v-col cols="12">
+      <v-col cols="12" style="width: 100%">
         <v-data-table
-          fill-height
           hide-default-header
           hide-default-footer
           :items="testData.comments"
-          class="elevation-1"
           style="width: 100%, box-shadow: unset !important; background-color: #f3f5f7"
         >
           <template v-slot:item="{ item }">
