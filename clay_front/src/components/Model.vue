@@ -279,7 +279,7 @@ export default {
     },
   },
   mounted() {
-    this.testData = this.getModel(this.$route.params.pachet);
+    this.testData = this.getModel(this.$route.params.packet);
   },
 
   methods: {

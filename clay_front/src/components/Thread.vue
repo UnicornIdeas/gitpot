@@ -41,28 +41,40 @@
           {{ testData.commentsNumber }} Comments
         </v-col>
       </v-col>
-      <v-col cols="12" style="width: 100%">
+      <v-col cols="12">
         <v-data-table
+          fill-height
           hide-default-header
           hide-default-footer
           :items="testData.comments"
           style="width: 100%, box-shadow: unset !important; background-color: #f3f5f7"
         >
           <template v-slot:item="{ item }">
-            <comment :comment="item" />
+            <tr>
+              <v-col cols=12>
+                <comment :comment="item" />
+              </v-col>
+            </tr>
           </template>
         </v-data-table>
       </v-col>
       <v-col cols="12">
-        <v-text-field
+        <v-textarea
           v-model="inputComment"
           label="Write a comment"
-          required
-          fill-width
+          height=300
+          filled
+          full-width
+          hide-details
+          no-resize
+          outlined
+          rounded
+          color="grey"
+          background-color="#e9edf0"
         />
       </v-col>
       <v-col cols="2" offset="10">
-        <v-btn rounded color="green" style="color: white"> COMMENT </v-btn>
+        <v-btn rounded color="green" style="color: white">POST COMMENT </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -107,6 +119,10 @@ export default {
     };
   },
   methods: {
+    pressedEnter() {
+      console.log('yaya');
+      this.inputComment += '\r\n';
+    },
     fDate(d) {
       return formatDate(d);
     },
@@ -122,3 +138,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-data-table tbody tr:hover {
+  background-color: transparent !important;
+}
+</style>
