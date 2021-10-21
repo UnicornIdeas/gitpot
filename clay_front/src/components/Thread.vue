@@ -1,9 +1,5 @@
 <template>
-  <v-container
-    fluid
-    fill-height
-    align-start
-  >
+  <v-container fluid fill-height align-start>
     <v-row style="background-color: #f3f5f7">
       <v-col cols="12" justify="start" align="start">
         <v-col cols="12" style="font-weight: bold; font-size: 25px">
@@ -51,7 +47,7 @@
         >
           <template v-slot:item="{ item }">
             <tr>
-              <v-col cols=12>
+              <v-col cols="12">
                 <comment :comment="item" />
               </v-col>
             </tr>
@@ -62,7 +58,7 @@
         <v-textarea
           v-model="inputComment"
           label="Write a comment"
-          height=300
+          height="300"
           filled
           full-width
           hide-details
@@ -74,7 +70,7 @@
         />
       </v-col>
       <v-col cols="2" offset="10">
-        <v-btn rounded color="green" style="color: white">POST COMMENT </v-btn>
+        <v-btn rounded color="green" style="color: white"> POST COMMENT </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -105,14 +101,14 @@ export default {
         commentsNumber: 1,
         comments: [
           {
-            author: 'ciuflingaru',
+            author: 'a1',
             date: '2021-08-19T13:53:59.390Z',
-            comment: 'SUGI PULA FRAERE CU COMENTARIUL TAU DE CACAT',
+            comment: 'dummy comment',
           },
           {
-            author: 'shefulabani',
+            author: 'a2',
             date: '2021-08-20T13:53:59.390Z',
-            comment: 'ai dreptate coae respekt:)',
+            comment: 'dummy 2',
           },
         ],
       },
