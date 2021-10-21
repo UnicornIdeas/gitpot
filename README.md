@@ -74,6 +74,7 @@ firebase deploy
 The application is simple to use, being similar with the well known and popular existing curation systems. More details can be seen in the vide below and on the live demo:
 
 - demo: https://clay-netw.web.app/ 
+- video: https://youtu.be/idytfegxCPY
 
 ## Future work
 
