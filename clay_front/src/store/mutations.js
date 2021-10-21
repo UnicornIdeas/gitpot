@@ -38,5 +38,8 @@ export default {
   },
   setSortType(state, sortT) {
     state.sorttype = sortT;
+  },
+  setUser(state, newuser) {
+    state.user = newuser;
   }
 };

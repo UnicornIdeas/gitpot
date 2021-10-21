@@ -37,7 +37,13 @@
                   <v-col md="auto">
                     <v-row no-gutters>
                       <v-col>
-                        <v-icon large> mdi-thumb-up </v-icon>
+                        <v-btn
+                          icon
+                          :color="ilikedmodel ? 'red' : 'gray'"
+                          @click="like"
+                        >
+                          <v-icon large> mdi-thumb-up </v-icon>
+                        </v-btn>
                       </v-col>
                     </v-row>
                     <v-row no-gutters>
@@ -209,9 +215,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import Readme from './Readme.vue';
 import { abbreviateNumber, formatDate } from '@/utils/utils';
+import { likedbyme, likeModel } from '@/utils/firestore';
 import Topics from './Topics.vue';
 import Thread from './Thread.vue';
 
@@ -225,10 +232,12 @@ export default {
     return {
       currentTab: null,
       testData: {},
+      ilikedmodel: false,
     };
   },
 
   computed: {
+    ...mapState(['user']),
     ...mapGetters(['getModel']),
     readmeURL() {
       return `https://raw.githubusercontent.com/ceramicstudio/datamodels/main/packages/${this.testData.name.raw}/README.md`;
@@ -280,9 +289,20 @@ export default {
   },
   mounted() {
     this.testData = this.getModel(this.$route.params.pachet);
+    if (this.user !== null) {
+      const modelid = this.$route.params.pachet;
+
+      likedbyme(modelid, this.user.uid).then((resp) => {
+        this.ilikedmodel = resp;
+      });
+    }
   },
 
   methods: {
+    like() {
+      const modelid = this.$route.params.pachet;
+      likeModel(modelid);
+    },
     copyText(text) {
       navigator.clipboard.writeText(text);
     },

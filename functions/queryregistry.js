@@ -127,6 +127,7 @@ async function insertModel(model) {
           downloads: downloadsresp,
           likes: 0,
           githubuser: githubuser,
+          tags: [],
         },
         {
           merge: true,

@@ -34,7 +34,7 @@
       </v-col>
       <v-col md="auto">
         <v-btn
-          v-if="isSignedIn === false"
+          v-if="user === null"
           rounded
           outlined
           style="color: #ff5722"
@@ -45,11 +45,11 @@
         </v-btn>
         <v-list-item v-else>
           <v-list-item-avatar>
-            <img :src="userImage" alt="usericon" />
+            <img :src="user.photoURL" alt="usericon" />
           </v-list-item-avatar>
           <v-list-item-content style="text-align: left">
             <v-list-item-title>
-              {{ userName }}
+              {{ user.reloadUserInfo.screenName }}
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -59,32 +59,15 @@
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 import { login, getUser } from '@/utils/firebase';
 
 export default {
   data() {
     return {
-      isSignedIn: false,
-      userImage: '',
       userName: '',
       searchValue: '',
     };
-  },
-  mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.isSignedIn = true;
-        this.userImage = user.photoURL;
-        this.userName = user.reloadUserInfo.screenName;
-      } else {
-        this.isSignedIn = false;
-        this.userImage = '';
-        this.userName = '';
-      }
-    });
   },
   methods: {
     ...mapMutations(['updateKeyword']),
@@ -100,6 +83,9 @@ export default {
     gohome() {
       this.$router.push('/');
     },
+  },
+  computed: {
+    ...mapState(['user']),
   },
 };
 </script>

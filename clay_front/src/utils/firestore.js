@@ -1,8 +1,9 @@
 import { getApp } from 'firebase/app';
 import * as ElasticAppSearch from '@elastic/app-search-javascript';
 import {
-  getFirestore, collection, query, getDocs
+  getFirestore, collection, query, getDocs, getDoc, doc
 } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const esClient = ElasticAppSearch.createClient({
   searchKey: 'search-ii52gwnvddymy5gsbrg25o4b',
@@ -145,6 +146,7 @@ export async function getTags() {
   });
   return res;
 }
+
 // returns all comments from a topic
 export async function getComments(id) {
   const app = getApp();
@@ -156,4 +158,28 @@ export async function getComments(id) {
     res.push(docc.data());
   });
   return res;
+}
+
+// adauga like unui model
+export async function likeModel(modelid) {
+  const app = getApp();
+  const functions = getFunctions(app, 'europe-central2');
+  const likem = httpsCallable(functions, 'likemodel');
+  likem({ model: modelid })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
+// verifica daca a dat like unui model
+export async function likedbyme(modelid, userid) {
+  const app = getApp();
+  const db = getFirestore(app);
+  const likedref = doc(db, `/users/${userid}/liked_models/${modelid}`);
+  const q = query(likedref);
+  const querySnapshot = await getDoc(q);
+  return querySnapshot.exists();
 }

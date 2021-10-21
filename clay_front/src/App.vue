@@ -10,6 +10,31 @@
   </div>
 </template>
 
+<script>
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { mapMutations } from 'vuex';
+
+export default {
+  mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.setUser(user);
+        // this.userImage = user.photoURL;
+        // this.userName = user.reloadUserInfo.screenName;
+      } else {
+        this.setUser(null);
+        // this.userImage = '';
+        // this.userName = '';
+      }
+    });
+  },
+  methods: {
+    ...mapMutations(['setUser']),
+  },
+};
+</script>
+
 <style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
