@@ -3,12 +3,9 @@ const admin = require("firebase-admin");
 
 const region="europe-central2";
 
-
 exports.likemodel = functions
     .region(region)
     .https.onCall(async (data, context) => {
-      console.log(data);
-      console.log(context.auth);
       if (context.auth===undefined) {
         return {"error": "not authenticated"};
       }

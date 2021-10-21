@@ -1,16 +1,18 @@
 <template>
   <v-app-bar app flat color="white">
-    <v-row align="center" justify="space-around">
+    <v-app-bar-nav-icon disabled>
+      <v-img
+        src="https://assets.website-files.com/609ab8eae6dd417c085cc925/609b2ba76d637745d781160e_logo-ceramic.png"
+        height="50px"
+        width="50px"
+      />
+    </v-app-bar-nav-icon>
+    <v-app-bar-title> Clay bricks </v-app-bar-title>
+    <!-- <v-row align="center" justify="space-around">
       <v-col cols="1">
-        <v-app-bar-nav-icon disabled>
-          <v-img
-            src="https://assets.website-files.com/609ab8eae6dd417c085cc925/609b2ba76d637745d781160e_logo-ceramic.png"
-            height="50px"
-            width="50px"
-          />
-        </v-app-bar-nav-icon>
-      </v-col>
-      <v-col cols="6">
+
+      </v-col> -->
+    <!-- <v-col cols="6">
         <v-btn plain> Learn </v-btn>
         <v-btn plain> Build </v-btn>
         <v-btn plain> Explore </v-btn>
@@ -33,8 +35,8 @@
         >
           Get Started
         </v-btn>
-      </v-col>
-    </v-row>
+      </v-col> -->
+    <!-- </v-row> -->
   </v-app-bar>
 </template>
 

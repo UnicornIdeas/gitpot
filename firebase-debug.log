@@ -1,0 +1,14 @@
+[debug] [2021-10-21T21:50:26.487Z] ----------------------------------------------------------------------
+[debug] [2021-10-21T21:50:26.489Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Game Dev\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2021-10-21T21:50:26.489Z] CLI Version:   9.20.0
+[debug] [2021-10-21T21:50:26.489Z] Platform:      win32
+[debug] [2021-10-21T21:50:26.489Z] Node Version:  v14.16.0
+[debug] [2021-10-21T21:50:26.490Z] Time:          Fri Oct 22 2021 00:50:26 GMT+0300 (Eastern European Summer Time)
+[debug] [2021-10-21T21:50:26.490Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-21T21:50:26.529Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-21T21:50:26.530Z] > authorizing via signed-in user (helmeseanualexandru@gmail.com)
+[debug] [2021-10-21T21:50:26.530Z] [iam] checking project clay-netw for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-10-21T21:50:26.531Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-21T21:50:26.531Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>

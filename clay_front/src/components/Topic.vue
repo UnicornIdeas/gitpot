@@ -4,7 +4,6 @@
       <v-row align="center">
         <v-col cols="1">
           <v-btn
-            v-if="topic.type === 'discussion'"
             :height="50"
             :width="50"
             rounded
@@ -13,7 +12,7 @@
           >
             <v-icon x-large rounded color="#304FFE"> mdi-forum </v-icon>
           </v-btn>
-          <v-btn
+          <!-- <v-btn
             v-if="topic.type === 'thread'"
             :height="50"
             :width="50"
@@ -24,24 +23,32 @@
             <v-icon x-large rounded color="yellow">
               mdi-lightbulb-outline
             </v-icon>
-          </v-btn>
+          </v-btn> -->
         </v-col>
         <v-col cols="8" align="start">
-          <v-col cols="12" @click="goToTopic">
-            {{ topic.description }}
+          <v-col
+            style="cursor: pointer; font-weight: bold"
+            cols="12"
+            @click="goToTopic"
+          >
+            {{ topic.title }}
           </v-col>
-          <v-col cols="12">
-            {{ topic.date }}
-          </v-col>
+          <v-col cols="12"> Posted by {{ topic.author }} </v-col>
         </v-col>
         <v-col cols="3">
-          <v-btn outlined rounded>
-            <v-icon>mdi-arrow-up</v-icon>{{ topic.likes }}
-          </v-btn>
-          <v-btn outlined rounded>
-            <v-icon outlined color="gray"> mdi-comment </v-icon
-            >{{ topic.comments }}
-          </v-btn>
+          <v-row>
+            <v-col cols="12">
+              <v-btn outlined rounded>
+                <v-icon>mdi-arrow-up</v-icon>{{ topic.likes }}
+              </v-btn>
+            </v-col>
+            <v-col cols="12">
+              <v-btn outlined rounded>
+                <v-icon outlined color="gray"> mdi-comment </v-icon
+                >{{ topic.comments }}
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-card-text>
@@ -56,8 +63,8 @@ export default {
   methods: {
     goToTopic() {
       this.$router.push(`/list/${this.$route.params.packet}/${this.topic.id}`);
-    }
-  }
+    },
+  },
 };
 </script>
 

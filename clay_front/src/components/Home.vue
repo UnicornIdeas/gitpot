@@ -32,12 +32,12 @@
             </v-text-field>
           </v-col>
         </v-row>
-        <v-row style="margin-top: -40px">
+        <!-- <v-row style="margin-top: -40px">
           <v-col cols="12">
-            <div style="color: white">Top searches and other shit</div>
+            <div style="color: white">Top searches and other ratings</div>
           </v-col>
-        </v-row>
-        <v-row justify="center">
+        </v-row> -->
+        <!-- <v-row justify="center">
           <v-col cols="1">
             <v-btn block rounded style="color: white" color="deep-orange">
               Popular
@@ -54,7 +54,7 @@
               Recent
             </v-btn>
           </v-col>
-        </v-row>
+        </v-row> -->
       </v-col>
     </v-row>
   </v-container>

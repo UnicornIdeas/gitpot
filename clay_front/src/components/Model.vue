@@ -90,10 +90,10 @@
             Proposals
           </v-tab>
 
-          <v-tab href="#example" :style="style2">
+          <!-- <v-tab href="#example" :style="style2">
             <v-icon color="#2E7D32"> mdi-widgets </v-icon>
             Example Apps
-          </v-tab>
+          </v-tab> -->
         </v-tabs>
 
         <v-tabs-items v-model="currentTab" style="background-color: #f3f5f7">
@@ -289,6 +289,7 @@ export default {
   },
   mounted() {
     this.testData = this.getModel(this.$route.params.packet);
+
     if (this.user !== null) {
       const modelid = this.$route.params.packet;
 

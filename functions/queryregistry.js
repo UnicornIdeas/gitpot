@@ -9,7 +9,7 @@ const registryURL = "https://raw.githubusercontent.com/ceramicstudio/datamodels/
 exports.queryregistry = functions
     .region(region)
     .pubsub
-    .schedule("every 4 hours")
+    .schedule("every 8 hours")
     .onRun(async (context) => {
     // .https.onCall(async (data, context) => {
       let registryContent=null;
