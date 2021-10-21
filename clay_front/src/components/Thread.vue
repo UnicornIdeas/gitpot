@@ -52,7 +52,12 @@
         </v-data-table>
       </v-col>
       <v-col cols="12">
-        <v-text-field v-model="inputComment" label="Write a comment" required />
+        <v-text-field
+          v-model="inputComment"
+          label="Write a comment"
+          required
+          fill-width
+        />
       </v-col>
       <v-col cols="2" offset="10">
         <v-btn rounded color="green" style="color: white"> COMMENT </v-btn>
