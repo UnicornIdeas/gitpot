@@ -212,6 +212,7 @@
 import { mapGetters } from 'vuex';
 import Readme from './Readme.vue';
 import { abbreviateNumber, formatDate } from '@/utils/utils';
+import { likedbyme } from '@/utils/firestore';
 import Topics from './Topics.vue';
 import Thread from './Thread.vue';
 
