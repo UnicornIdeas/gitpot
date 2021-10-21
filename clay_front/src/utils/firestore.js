@@ -183,3 +183,21 @@ export async function likedbyme(modelid, userid) {
   const querySnapshot = await getDoc(q);
   return querySnapshot.exists();
 }
+
+// adauga un nou proposal
+export async function newproposal(model, topic, message) {
+  const app = getApp();
+  const functions = getFunctions(app, 'europe-central2');
+  const addproposal = httpsCallable(functions, 'createtopic');
+  addproposal({
+    model,
+    topic,
+    message,
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}

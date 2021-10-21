@@ -20,12 +20,8 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.setUser(user);
-        // this.userImage = user.photoURL;
-        // this.userName = user.reloadUserInfo.screenName;
       } else {
         this.setUser(null);
-        // this.userImage = '';
-        // this.userName = '';
       }
     });
   },
