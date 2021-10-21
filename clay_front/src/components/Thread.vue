@@ -1,5 +1,9 @@
 <template>
-  <v-container fluid fill-height align-start>
+  <v-container
+    fluid
+    fill-height
+    align-start
+  >
     <v-row style="background-color: #f3f5f7">
       <v-col cols="12" justify="start" align="start">
         <v-col cols="12" style="font-weight: bold; font-size: 25px">
@@ -43,19 +47,34 @@
           hide-default-header
           hide-default-footer
           :items="testData.comments"
-          class="elevation-1"
           style="width: 100%, box-shadow: unset !important; background-color: #f3f5f7"
         >
           <template v-slot:item="{ item }">
-            <comment :comment="item" />
+            <tr>
+              <v-col cols=12>
+                <comment :comment="item" />
+              </v-col>
+            </tr>
           </template>
         </v-data-table>
       </v-col>
       <v-col cols="12">
-        <v-text-field v-model="inputComment" label="Write a comment" required />
+        <v-textarea
+          v-model="inputComment"
+          label="Write a comment"
+          height=300
+          filled
+          full-width
+          hide-details
+          no-resize
+          outlined
+          rounded
+          color="grey"
+          background-color="#e9edf0"
+        />
       </v-col>
       <v-col cols="2" offset="10">
-        <v-btn rounded color="green" style="color: white"> COMMENT </v-btn>
+        <v-btn rounded color="green" style="color: white">POST COMMENT </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -100,6 +119,10 @@ export default {
     };
   },
   methods: {
+    pressedEnter() {
+      console.log('yaya');
+      this.inputComment += '\r\n';
+    },
     fDate(d) {
       return formatDate(d);
     },
@@ -115,3 +138,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-data-table tbody tr:hover {
+  background-color: transparent !important;
+}
+</style>

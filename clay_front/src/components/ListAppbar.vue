@@ -73,6 +73,9 @@ export default {
     ...mapMutations(['updateKeyword']),
     search() {
       this.updateKeyword(this.searchValue);
+      if (this.$route.path !== '/list') {
+        this.$router.push('/list');
+      }
     },
     signin() {
       const user = getUser();

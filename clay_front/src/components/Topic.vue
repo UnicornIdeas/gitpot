@@ -27,7 +27,7 @@
           </v-btn>
         </v-col>
         <v-col cols="8" align="start">
-          <v-col cols="12">
+          <v-col cols="12" @click="goToTopic">
             {{ topic.description }}
           </v-col>
           <v-col cols="12">
@@ -53,6 +53,11 @@ export default {
   name: 'Topic',
   props: ['topic'],
   created() {},
+  methods: {
+    goToTopic() {
+      this.$router.push(`/list/${this.$route.params.packet}/${this.topic.id}`);
+    }
+  }
 };
 </script>
 

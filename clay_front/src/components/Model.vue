@@ -288,9 +288,9 @@ export default {
     },
   },
   mounted() {
-    this.testData = this.getModel(this.$route.params.pachet);
+    this.testData = this.getModel(this.$route.params.packet);
     if (this.user !== null) {
-      const modelid = this.$route.params.pachet;
+      const modelid = this.$route.params.packet;
 
       likedbyme(modelid, this.user.uid).then((resp) => {
         this.ilikedmodel = resp;
@@ -300,7 +300,7 @@ export default {
 
   methods: {
     like() {
-      const modelid = this.$route.params.pachet;
+      const modelid = this.$route.params.packet;
       likeModel(modelid);
     },
     copyText(text) {

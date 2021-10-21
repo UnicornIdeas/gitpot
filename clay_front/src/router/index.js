@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path: '/list/:pachet',
+    path: '/list/:packet',
     name: 'Model',
     components:
     {
@@ -48,7 +48,7 @@ const routes = [
     }
   },
   {
-    path: '/thread',
+    path: '/list/:packet/:id',
     name: 'Thread',
     components:
     {
